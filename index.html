@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>শ্রাবণী tense পারে না</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700&family=Hind+Siliguri:wght@400;500;600&display=swap">
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<style>
+/* Layout: an exercise book. One narrow column; lessons as a numbered path, practice as one card at a time. */
+:root{
+  --paper:#f2f5fb; --surface:#ffffff; --ink:#16233f; --muted:#56647f; --line:#d3dbea;
+  --accent:#1f4fd1; --accent-soft:#e4ebfd; --on-accent:#ffffff; --margin:#d6455a;
+  --good:#17805a; --good-soft:#dff4ea; --bad:#c23434; --bad-soft:#fde6e6; --warn:#9a6a00; --warn-soft:#fbf0d4;
+  --display:"Baloo Da 2","Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+  --body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f1524; --surface:#182036; --ink:#e8edf8; --muted:#9ba8c4; --line:#2c3757;
+  --accent:#86a8ff; --accent-soft:#222f55; --on-accent:#0f1524; --margin:#ff7a8c;
+  --good:#55d3a0; --good-soft:#143a2d; --bad:#ff8a8a; --bad-soft:#44201f; --warn:#f0c35a; --warn-soft:#3a2f12; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1524; --surface:#182036; --ink:#e8edf8; --muted:#9ba8c4; --line:#2c3757;
+  --accent:#86a8ff; --accent-soft:#222f55; --on-accent:#0f1524; --margin:#ff7a8c;
+  --good:#55d3a0; --good-soft:#143a2d; --bad:#ff8a8a; --bad-soft:#44201f; --warn:#f0c35a; --warn-soft:#3a2f12; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+.page{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:20px 56px;display:flex;flex-direction:column;gap:20px}
+h1,h2,h3{font-family:var(--display);line-height:1.25;margin:0;text-wrap:balance}
+h1{font-size:2rem}
+h2{font-size:1.5rem}
+h3{font-size:1.05rem;color:var(--muted);font-family:var(--body);font-weight:600}
+p{margin:0}
+.sub{color:var(--muted)}
+small{font-size:.82rem}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.tabs{display:flex;gap:8px;border-bottom:2px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);z-index:2}
+.tabs button{background:none;border:0;padding:10px 14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+
+.stack{display:flex;flex-direction:column;gap:16px}
+.tight{gap:6px}
+.pick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pick.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pick.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pick button{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;text-align:left;line-height:1.35}
+.pick button small{display:block;color:var(--muted)}
+.pick button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.pick .wide{grid-column:1/-1}
+
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.sec{display:flex;flex-direction:column;gap:8px;min-width:0}
+.formula{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-weight:600}
+.formula span{border:1.5px solid var(--accent);color:var(--accent);border-radius:6px;padding:2px 10px}
+.formula i{font-style:normal;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:2px 12px;font-weight:500;font-size:.95rem}
+.ex{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.ex li{border-bottom:1px dashed var(--line);padding-bottom:10px}
+.ex li:last-child{border-bottom:0;padding-bottom:0}
+.en{font-weight:500}
+.en b,.blankline b,.bnline b,td b{color:var(--accent);font-weight:600}
+.bn{color:var(--muted)}
+.notes{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+.callout{background:var(--accent-soft);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.callout strong{font-family:var(--display);font-size:1.05rem}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:.93rem;line-height:1.45}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{background:var(--accent-soft);font-weight:600;white-space:nowrap}
+td.nowrap{white-space:nowrap}
+tr.irr td:first-child{color:var(--accent);font-weight:600}
+table.chart{min-width:540px}
+table.chart td{padding:0}
+table.chart td button{all:unset;box-sizing:border-box;display:block;width:100%;padding:8px 10px;cursor:pointer}
+table.chart td button:hover{background:var(--accent-soft)}
+table.chart td button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+table.chart .cbn{display:block}
+table.chart .cen{display:block;color:var(--muted);font-size:.85rem}
+
+svg.tl{width:100%;max-width:380px;height:auto;display:block}
+svg.tl text{fill:var(--muted);font-family:var(--body);font-size:12px}
+svg.tl .axis{stroke:var(--line);stroke-width:2;fill:none}
+svg.tl .now{stroke:var(--margin);stroke-width:2;fill:none}
+svg.tl .ref{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:3 3;fill:none}
+svg.tl .mark{fill:var(--accent);stroke:var(--accent)}
+svg.tl .dash{stroke:var(--accent);stroke-width:2;stroke-dasharray:4 4;fill:none}
+
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:12px 20px;font-weight:600;align-self:flex-start}
+.btn.ghost{background:none;color:var(--accent);border:1.5px solid var(--accent)}
+.btn.small{padding:4px 12px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.between{justify-content:space-between}
+.link{background:none;border:0;color:var(--accent);font-weight:600;padding:4px 0;align-self:flex-start}
+
+.lgroup{display:flex;flex-direction:column;gap:6px}
+.lrow{display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:left;width:100%}
+.lrow .ln{font-family:var(--display);font-size:1.15rem;color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
+.lrow .lt{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+.lrow .lt small{color:var(--muted)}
+.lrow .done{color:var(--good);font-weight:600;font-size:.9rem}
+.lrow .start{background:var(--accent);color:var(--on-accent);border-radius:999px;padding:2px 10px;font-size:.8rem;font-weight:600;white-space:nowrap}
+.lrow.next{border-color:var(--accent)}
+
+.meter{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.meter div{height:100%;background:var(--accent);border-radius:4px}
+.qtype{font-size:.85rem;font-weight:600;color:var(--margin);letter-spacing:.02em}
+.prompt{font-size:1.3rem;font-family:var(--display);line-height:1.45}
+.prompt b{color:var(--accent)}
+.blankline{font-size:1.15rem;font-weight:500}
+.bnline{color:var(--muted)}
+.gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--ink);margin:0 4px}
+.opts{display:grid;gap:8px}
+.opts button,.tcol button{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;text-align:left;font-weight:500;line-height:1.35}
+.opts.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts button.right,.tcol button.right{border-color:var(--good);background:var(--good-soft)}
+.opts button.wrong,.tcol button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opts button:disabled,.tcol button:disabled{cursor:default}
+.tgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tcol{display:flex;flex-direction:column;gap:6px;min-width:0}
+.tcol .th{font-weight:600;text-align:center;line-height:1.3;padding-bottom:2px}
+.tcol .th small{display:block;color:var(--muted);font-weight:400}
+.tcol button{padding:10px 8px;text-align:center;font-size:.92rem}
+input.fill,select{font:inherit;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;width:100%;max-width:340px}
+.tray,.built{display:flex;flex-wrap:wrap;gap:8px;min-height:48px;align-items:center}
+.built{border-bottom:2px solid var(--line);padding-bottom:8px}
+.tile{background:var(--surface);border:1.5px solid var(--line);border-radius:8px;padding:6px 12px;font-weight:500}
+.built .tile{border-color:var(--accent);background:var(--accent-soft)}
+.fb{border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.fb.ok{background:var(--good-soft)}
+.fb.no{background:var(--bad-soft)}
+.fb strong{font-family:var(--display);font-size:1.1rem}
+.fb.ok strong{color:var(--good)}
+.fb.no strong{color:var(--bad)}
+.why{display:flex;flex-direction:column;gap:4px}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.big{font-family:var(--display);font-size:2.2rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.heat td{text-align:center;padding:0}
+.heat td button{all:unset;box-sizing:border-box;display:block;width:100%;padding:10px 6px;cursor:pointer;line-height:1.3}
+.heat td button:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.heat td small{display:block;color:var(--muted)}
+.heat td.lv-good{background:var(--good-soft)}
+.heat td.lv-mid{background:var(--warn-soft)}
+.heat td.lv-bad{background:var(--bad-soft)}
+.heat th:first-child,.heat td:first-child{text-align:left}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:baseline;padding-block:10px;border-bottom:1px solid var(--line)}
+.prow:last-child{border-bottom:0}
+.prow .meter{grid-column:1/-1}
+.prow .num{font-variant-numeric:tabular-nums;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.88rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:var(--line)}
+.legend .g::before{background:var(--good-soft);border:1px solid var(--good)}
+.legend .m::before{background:var(--warn-soft);border:1px solid var(--warn)}
+.legend .b::before{background:var(--bad-soft);border:1px solid var(--bad)}
+@media (prefers-reduced-motion:no-preference){.meter div{transition:width .3s}}
+
+@media (max-width:560px){
+  body{font-size:16px}
+  h1{font-size:1.55rem}
+  h2{font-size:1.3rem}
+  .page{padding-block:14px 40px;gap:16px}
+  .sheet{padding:16px;gap:18px}
+  .tabs{gap:0}
+  .tabs button{flex:1;padding:10px 4px}
+  .btn{align-self:stretch;text-align:center;padding:14px 16px}
+  .row>.btn{flex:1 1 100%}
+  .btn.small{align-self:auto;padding:4px 12px}
+  .row>.btn.small{flex:0 0 auto}
+  input.fill,select{max-width:none;font-size:16px;padding:12px}
+  .opts button{padding:13px 14px}
+  .tile{padding:9px 13px}
+  .prompt{font-size:1.15rem}
+  .blankline{font-size:1.05rem}
+  .big{font-size:1.7rem}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pick.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pair{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="stack tight">
+    <h1>শ্রাবণী tense পারে না</h1>
+    <p class="sub">একদম শুরু থেকে ১২টি tense: পড়ুন, চিনতে শিখুন, তারপর যত খুশি অনুশীলন করুন।</p>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-learn" data-tab="learn">শিখুন</button>
+    <button role="tab" id="tab-practice" data-tab="practice">অনুশীলন</button>
+    <button role="tab" id="tab-progress" data-tab="progress">অগ্রগতি</button>
+  </nav>
+  <main id="view" class="stack"></main>
+</div>
+
+<script>
+/* ---------- tense names ---------- */
+const ASP=['Indefinite','Continuous','Perfect','Perfect Continuous'];
+const ASP_BN=['সাধারণ','ঘটমান','পুরাঘটিত','পুরাঘটিত ঘটমান'];
+const TIME=['Present','Past','Future'], TIME_BN=['বর্তমান','অতীত','ভবিষ্যৎ'];
+const tname=t=>TIME[t>>2]+' '+ASP[t&3];
+const tbn=t=>ASP_BN[t&3]+' '+TIME_BN[t>>2];
+
+/* ---------- Bangla verbs: present forms [আমি, তুমি, সে, আপনি] and stems ---------- */
+const B={
+ 'খা':{pr:['খাই','খাও','খায়','খান'],c:'খাচ্ছ',pf:'খেয়ে',ps:'খেল',fu:'খাব',inf:'খেতে'},
+ 'কর':{pr:['করি','করো','করে','করেন'],c:'করছ',pf:'করে',ps:'করল',fu:'করব',inf:'করতে'},
+ 'পড়':{pr:['পড়ি','পড়ো','পড়ে','পড়েন'],c:'পড়ছ',pf:'পড়ে',ps:'পড়ল',fu:'পড়ব',inf:'পড়তে'},
+ 'লিখ':{pr:['লিখি','লেখো','লেখে','লেখেন'],c:'লিখছ',pf:'লিখে',ps:'লিখল',fu:'লিখব',inf:'লিখতে'},
+ 'খেল':{pr:['খেলি','খেলো','খেলে','খেলেন'],c:'খেলছ',pf:'খেলে',ps:'খেলল',fu:'খেলব',inf:'খেলতে'},
+ 'দেখ':{pr:['দেখি','দেখো','দেখে','দেখেন'],c:'দেখছ',pf:'দেখে',ps:'দেখল',fu:'দেখব',inf:'দেখতে'},
+ 'ঘুম':{pr:['ঘুমাই','ঘুমাও','ঘুমায়','ঘুমান'],c:'ঘুমাচ্ছ',pf:'ঘুমিয়ে',ps:'ঘুমাল',fu:'ঘুমাব',inf:'ঘুমাতে'},
+ 'বানা':{pr:['বানাই','বানাও','বানায়','বানান'],c:'বানাচ্ছ',pf:'বানিয়ে',ps:'বানাল',fu:'বানাব',inf:'বানাতে'},
+ 'গা':{pr:['গাই','গাও','গায়','গান'],c:'গাইছ',pf:'গেয়ে',ps:'গাইল',fu:'গাইব',inf:'গাইতে'},
+ 'ধো':{pr:['ধুই','ধোও','ধোয়','ধোন'],c:'ধুচ্ছ',pf:'ধুয়ে',ps:'ধুল',fu:'ধোব',inf:'ধুতে'},
+ 'শিখ':{pr:['শিখি','শেখো','শেখে','শেখেন'],c:'শিখছ',pf:'শিখে',ps:'শিখল',fu:'শিখব',inf:'শিখতে'},
+ 'চালা':{pr:['চালাই','চালাও','চালায়','চালান'],c:'চালাচ্ছ',pf:'চালিয়ে',ps:'চালাল',fu:'চালাব',inf:'চালাতে'},
+ 'পড়া':{pr:['পড়াই','পড়াও','পড়ায়','পড়ান'],c:'পড়াচ্ছ',pf:'পড়িয়ে',ps:'পড়াল',fu:'পড়াব',inf:'পড়াতে'},
+ 'হাঁট':{pr:['হাঁটি','হাঁটো','হাঁটে','হাঁটেন'],c:'হাঁটছ',pf:'হেঁটে',ps:'হাঁটল',fu:'হাঁটব',inf:'হাঁটতে'},
+ 'দৌড়':{pr:['দৌড়াই','দৌড়াও','দৌড়ায়','দৌড়ান'],c:'দৌড়াচ্ছ',pf:'দৌড়ে',ps:'দৌড়াল',fu:'দৌড়াব',inf:'দৌড়াতে'},
+ 'কিন':{pr:['কিনি','কেনো','কেনে','কেনেন'],c:'কিনছ',pf:'কিনে',ps:'কিনল',fu:'কিনব',inf:'কিনতে'},
+ 'বল':{pr:['বলি','বলো','বলে','বলেন'],c:'বলছ',pf:'বলে',ps:'বলল',fu:'বলব',inf:'বলতে'},
+ 'যা':{pr:['যাই','যাও','যায়','যান'],c:'যাচ্ছ',pf:'গিয়ে',ps:'গেল',fu:'যাব',inf:'যেতে'},
+ 'আস':{pr:['আসি','আসো','আসে','আসেন'],c:'আসছ',pf:'এসে',ps:'এল',fu:'আসব',inf:'আসতে'},
+ 'আঁক':{pr:['আঁকি','আঁকো','আঁকে','আঁকেন'],c:'আঁকছ',pf:'এঁকে',ps:'আঁকল',fu:'আঁকব',inf:'আঁকতে'},
+ 'শুন':{pr:['শুনি','শোনো','শোনে','শোনেন'],c:'শুনছ',pf:'শুনে',ps:'শুনল',fu:'শুনব',inf:'শুনতে'},
+ 'কাট':{pr:['কাটি','কাটো','কাটে','কাটেন'],c:'কাটছ',pf:'কেটে',ps:'কাটল',fu:'কাটব',inf:'কাটতে'}
+};
+const BE={c:['ি','','ে','েন'],pf:['ছি','ছ','ছে','ছেন'],ps:['াম','ে','','েন'],pc:['িলাম','িলে','িল','িলেন'],pp:['ছিলাম','ছিলে','ছিল','ছিলেন'],fu:['','ে','ে','েন']};
+function bnV(k,t,p){const b=B[k];switch(t){
+ case 0:return b.pr[p];
+ case 1:case 3:return b.c+BE.c[p];
+ case 2:return b.pf+BE.pf[p];
+ case 4:return b.ps+BE.ps[p];
+ case 5:case 7:return b.c+BE.pc[p];
+ case 6:return b.pf+BE.pp[p];
+ case 8:return b.fu+BE.fu[p];
+ case 9:case 11:return b.inf+' থাকব'+BE.fu[p];
+ case 10:return b.pf+' থাকব'+BE.fu[p];}}
+
+/* ---------- English verbs: V1|V2|V3|ing|s, Bangla meaning, Bangla verb key, prefix, objects ---------- */
+const VERBS=[
+ ['eat|ate|eaten|eating|eats','খাওয়া','খা','',[['ভাত','rice'],['আম','mangoes'],['রুটি','bread']]],
+ ['drink|drank|drunk|drinking|drinks','পান করা','খা','',[['পানি','water'],['চা','tea'],['দুধ','milk']]],
+ ['cook|cooked|cooked|cooking|cooks','রান্না করা','কর','রান্না ',[['ভাত','rice'],['মাছ','fish'],['খাবার','food']]],
+ ['clean|cleaned|cleaned|cleaning|cleans','পরিষ্কার করা','কর','পরিষ্কার ',[['ঘর','the room'],['রান্নাঘর','the kitchen']]],
+ ['read|read|read|reading|reads','পড়া','পড়','',[['বই','a book'],['পত্রিকা','the newspaper'],['গল্প','a story']]],
+ ['write|wrote|written|writing|writes','লেখা','লিখ','',[['চিঠি','a letter'],['গল্প','a story']]],
+ ['play|played|played|playing|plays','খেলা','খেল','',[['ফুটবল','football'],['ক্রিকেট','cricket'],['লুডু','ludo']]],
+ ['watch|watched|watched|watching|watches','দেখা','দেখ','',[['টিভি','TV'],['নাটক','a drama'],['সিনেমা','a movie']]],
+ ['sleep|slept|slept|sleeping|sleeps','ঘুমানো','ঘুম','',[['','']]],
+ ['make|made|made|making|makes','বানানো','বানা','',[['চা','tea'],['কেক','a cake']]],
+ ['sing|sang|sung|singing|sings','গাওয়া','গা','',[['গান','a song']]],
+ ['wash|washed|washed|washing|washes','ধোয়া','ধো','',[['কাপড়','clothes'],['থালা-বাসন','the dishes']]],
+ ['learn|learned|learned|learning|learns','শেখা','শিখ','',[['ইংরেজি','English'],['রান্না','cooking']]],
+ ['drive|drove|driven|driving|drives','চালানো','চালা','',[['গাড়ি','a car'],['বাস','a bus']]],
+ ['teach|taught|taught|teaching|teaches','পড়ানো','পড়া','',[['ছাত্রদের','the students'],['ইংরেজি','English']]],
+ ['walk|walked|walked|walking|walks','হাঁটা','হাঁট','',[['পার্কে','in the park'],['','']]],
+ ['run|ran|run|running|runs','দৌড়ানো','দৌড়','',[['মাঠে','in the field']]],
+ ['buy|bought|bought|buying|buys','কেনা','কিন','',[['সবজি','vegetables'],['ফল','fruit']]],
+ ['talk|talked|talked|talking|talks','কথা বলা','বল','কথা ',[['ফোনে','on the phone'],['','']]],
+ ['help|helped|helped|helping|helps','সাহায্য করা','কর','সাহায্য ',[['বন্ধুকে','a friend'],['প্রতিবেশীকে','the neighbour']]],
+ ['go|went|gone|going|goes','যাওয়া','যা','',[['স্কুলে','to school'],['বাজারে','to the market'],['অফিসে','to the office']]],
+ ['come|came|come|coming|comes','আসা','আস','',[['বাড়িতে','home']],1],
+ ['draw|drew|drawn|drawing|draws','আঁকা','আঁক','',[['ছবি','a picture']]],
+ ['listen|listened|listened|listening|listens','শোনা','শুন','',[['গান','to music'],['রেডিও','to the radio']]],
+ ['cut|cut|cut|cutting|cuts','কাটা','কাট','',[['সবজি','vegetables'],['কাগজ','paper']]],
+ ['work|worked|worked|working|works','কাজ করা','কর','কাজ ',[['অফিসে','at the office'],['বাগানে','in the garden']]],
+ ['study|studied|studied|studying|studies','পড়াশোনা করা','কর','পড়াশোনা ',[['',''],['লাইব্রেরিতে','in the library']]],
+ ['wait|waited|waited|waiting|waits','অপেক্ষা করা','কর','অপেক্ষা ',[['বাসের জন্য','for the bus']]],
+ ['sew|sewed|sewn|sewing|sews','সেলাই করা','কর','সেলাই ',[['জামা','a dress']]]
+].map(r=>{const[v,v2,v3,ing,s]=r[0].split('|');return{v,v2,v3,ing,s,bn:r[1],b:r[2],pre:r[3],o:r[4],nd:!!r[5]}});
+
+/* ---------- subjects: ec = English agreement (I / s3 / pl), p = Bangla person (0 আমি,1 তুমি,2 সে,3 আপনি) ---------- */
+const S=[
+ {bn:'আমি',en:'I',ec:'I',p:0},{bn:'আমরা',en:'We',ec:'pl',p:0},{bn:'তুমি',en:'You',ec:'pl',p:1},{bn:'আপনি',en:'You',ec:'pl',p:3},
+ {bn:'সে',en:'He',ec:'s3',p:2},{bn:'সে',en:'She',ec:'s3',p:2},{bn:'তারা',en:'They',ec:'pl',p:2},{bn:'রিনা',en:'Rina',ec:'s3',p:2},
+ {bn:'রহিম',en:'Rahim',ec:'s3',p:2},{bn:'শিশুরা',en:'The children',ec:'pl',p:2},{bn:'আমার মা',en:'My mother',ec:'s3',p:3},
+ {bn:'আমার বাবা',en:'My father',ec:'s3',p:3},{bn:'আমার বোন',en:'My sister',ec:'s3',p:2}
+];
+const KEEPCAP=['I','Rina','Rahim'];
+const SUB=en=>S.find(x=>x.en===en);
+
+/* ---------- time words per tense ---------- */
+const MK=[
+ [{bn:'প্রতিদিন',en:'every day'},{bn:'রোজ সকালে',en:'every morning'},{bn:'প্রতি সন্ধ্যায়',en:'every evening'}],
+ [{bn:'এখন',en:'now'},{bn:'এই মুহূর্তে',en:'at the moment'}],
+ [{bn:'এইমাত্র',en:'just',pos:'mid'},{bn:'ইতিমধ্যে',en:'already',pos:'mid'},{bn:'',en:''}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'},{bn:'তিন দিন ধরে',en:'for three days'}],
+ [{bn:'গতকাল',en:'yesterday'},{bn:'গত রাতে',en:'last night'},{bn:'গত সপ্তাহে',en:'last week'}],
+ [{bn:'তখন',en:'at that time'},{bn:'গতকাল এই সময়ে',en:'at this time yesterday'}],
+ [{bn:'মেহমান আসার আগে',en:'before the guests came',pos:'pre'},{bn:'সন্ধ্যার আগেই',en:'before evening'}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'}],
+ [{bn:'আগামীকাল',en:'tomorrow'},{bn:'আগামী সপ্তাহে',en:'next week'}],
+ [{bn:'আগামীকাল এই সময়ে',en:'at this time tomorrow'}],
+ [{bn:'আগামীকালের মধ্যে',en:'by tomorrow'},{bn:'সন্ধ্যার মধ্যে',en:'by evening'}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'এক বছর ধরে',en:'for a year'}]
+];
+
+/* ---------- lesson text for each tense ---------- */
+const TD=[
+ {when:'অভ্যাস, প্রতিদিনের কাজ বা চিরসত্য কথা বোঝাতে। যেমন: আমি প্রতিদিন ভাত খাই। সূর্য পূর্ব দিকে ওঠে।',
+  clue:'ক্রিয়ার শেষে ই / ও / এ / য় / ন। ছ, ল, ব বা "থাক" কিছু নেই।',
+  words:['always','usually','often','sometimes','every day','every morning'],
+  f:['Subject','V1 (একজন হলে V1+s/es)','বাকি অংশ'],neg:'Subject + do / does + not + V1',q:'Do / Does + Subject + V1 ...?',
+  negEx:['She does not eat rice every day.','সে প্রতিদিন ভাত খায় না।'],
+  notes:['he, she, it বা একজনের নাম হলে verb-এ s/es বসে: eat → eats, wash → washes, study → studies।','I, we, you, they হলে verb-এ কিছু বসে না: I eat, they eat।','do / does বসলে verb আর s পায় না: She does not eats ✗, She does not eat ✓।']},
+ {when:'যে কাজ ঠিক এখন চলছে, এখনো শেষ হয়নি। যেমন: আমি এখন ভাত খাচ্ছি।',
+  clue:'ক্রিয়ার শেষে ছি / ছ / ছে / ছেন, আর ছ-এর ঠিক আগে এ-কার (ে) নেই: খাচ্ছে, করছে, দেখছি।',
+  words:['now','at the moment','Look!','Listen!'],
+  f:['Subject','am / is / are','V1+ing','বাকি অংশ'],neg:'Subject + am / is / are + not + V1+ing',q:'Am / Is / Are + Subject + V1+ing ...?',
+  negEx:['She is not eating rice now.','সে এখন ভাত খাচ্ছে না।'],
+  notes:['I-এর সাথে am; একজন (he, she, it, রিনা) হলে is; বাকি সবার সাথে are।','শেষে e থাকলে e বাদ দিয়ে ing: make → making, write → writing।','কিছু ছোট verb-এ শেষ অক্ষর দুইবার: run → running, cut → cutting।']},
+ {when:'যে কাজ এইমাত্র বা কিছু আগে শেষ হয়েছে, আর তার ফল এখনো আছে। যেমন: আমি ভাত খেয়েছি (তাই এখন পেট ভরা)।',
+  clue:'ক্রিয়ার শেষে ছি / ছ / ছে / ছেন, আর ছ-এর ঠিক আগে এ-কার (ে) আছে: খেয়েছে, করেছে, দেখেছি।',
+  words:['just','already','yet','ever','never'],
+  f:['Subject','have / has','V3','বাকি অংশ'],neg:'Subject + have / has + not + V3',q:'Have / Has + Subject + V3 ...?',
+  negEx:['She has not eaten rice.','সে ভাত খায়নি।'],
+  notes:['একজন (he, she, it, রিনা) হলে has; বাকি সবার সাথে have।','verb-এর তৃতীয় রূপ (V3) বসে: eat → eaten, go → gone।','yesterday, last night থাকলে Present Perfect হয় না, তখন Past Indefinite: I ate rice yesterday।']},
+ {when:'যে কাজ আগে শুরু হয়েছে আর এখনো চলছে। কতক্ষণ ধরে বা কখন থেকে, সেটা বলা থাকে। যেমন: আমি দুই ঘণ্টা ধরে পড়ছি।',
+  clue:'ঘটমান বর্তমানের মতো (ছি / ছে), কিন্তু সাথে সময় থাকে: "ধরে" বা "থেকে"।',
+  words:['for two hours','since morning','for a long time'],
+  f:['Subject','have / has','been','V1+ing','for / since + সময়'],neg:'Subject + have / has + not + been + V1+ing',q:'Have / Has + Subject + been + V1+ing ...?',
+  negEx:['She has not been eating rice for two hours.','সে দুই ঘণ্টা ধরে ভাত খাচ্ছে না।'],
+  notes:['"ধরে" (কতক্ষণ) হলে for: for two hours। "থেকে" (কখন শুরু) হলে since: since morning।','been কখনো বাদ যায় না: She has eating ✗, She has been eating ✓।','বাংলায় "ধরে / থেকে" না থাকলে সেটা সাধারণত Present Continuous।']},
+ {when:'অতীতে কোনো কাজ হয়েছিল এবং শেষ হয়ে গেছে। যেমন: আমি গতকাল ভাত খেলাম।',
+  clue:'ক্রিয়ার শেষে লাম / লে / ল / লেন: খেলাম, করল, গেলেন।',
+  words:['yesterday','last night','last week','ago','in 2020'],
+  f:['Subject','V2','বাকি অংশ'],neg:'Subject + did not + V1',q:'Did + Subject + V1 ...?',
+  negEx:['She did not eat rice yesterday.','সে গতকাল ভাত খায়নি।'],
+  notes:['verb-এর দ্বিতীয় রূপ (V2) বসে, সব subject-এর জন্য একই: I ate, she ate, they ate।','did বসলে verb আবার V1 হয়: She did not ate ✗, She did not eat ✓।','বাংলা না-বোধক "খায়নি" Present Perfect-ও হতে পারে। yesterday-র মতো সময়-শব্দ থাকলে Past Indefinite।']},
+ {when:'অতীতের কোনো সময়ে যে কাজ চলছিল। যেমন: আমি তখন ভাত খাচ্ছিলাম।',
+  clue:'ক্রিয়ার শেষে ছিলাম / ছিলে / ছিল / ছিলেন, আর ছ-এর আগে এ-কার নেই: খাচ্ছিল, করছিলাম।',
+  words:['at that time','at this time yesterday','when','while'],
+  f:['Subject','was / were','V1+ing','বাকি অংশ'],neg:'Subject + was / were + not + V1+ing',q:'Was / Were + Subject + V1+ing ...?',
+  negEx:['She was not eating rice at that time.','সে তখন ভাত খাচ্ছিল না।'],
+  notes:['I এবং একজন (he, she, it, রিনা) হলে was; বাকি সবার সাথে were।','বাংলায় "ছিল" আছে কিন্তু ছ-এর আগে এ-কার নেই: খাচ্ছিল (Continuous), খেয়েছিল (Perfect)।']},
+ {when:'অতীতে দুটি কাজের মধ্যে যেটা আগে শেষ হয়েছিল। যেমন: মেহমান আসার আগে আমি ভাত খেয়েছিলাম।',
+  clue:'ক্রিয়ার শেষে ছিলাম / ছিল, আর ছ-এর আগে এ-কার আছে: খেয়েছিল, করেছিলাম।',
+  words:['before','after','by the time','already'],
+  f:['Subject','had','V3','বাকি অংশ'],neg:'Subject + had not + V3',q:'Had + Subject + V3 ...?',
+  negEx:['She had not eaten rice before the guests came.','মেহমান আসার আগে সে ভাত খায়নি।'],
+  notes:['সব subject-এর সাথে had।','অতীতের দুটি কাজের মধ্যে আগেরটি Past Perfect, পরেরটি Past Indefinite: She had eaten before the guests came।']},
+ {when:'অতীতে কোনো কাজ কিছু সময় ধরে চলছিল। যেমন: আমি দুই ঘণ্টা ধরে পড়ছিলাম।',
+  clue:'ঘটমান অতীতের মতো (খাচ্ছিল), সাথে সময় থাকে: "ধরে" বা "থেকে"।',
+  words:['for two hours','since morning','before'],
+  f:['Subject','had','been','V1+ing','for / since + সময়'],neg:'Subject + had not + been + V1+ing',q:'Had + Subject + been + V1+ing ...?',
+  negEx:['She had not been eating rice for two hours.','সে দুই ঘণ্টা ধরে ভাত খাচ্ছিল না।'],
+  notes:['সব subject-এর সাথে had been।','"খাচ্ছে + ধরে" হলে Present Perfect Continuous, "খাচ্ছিল + ধরে" হলে Past Perfect Continuous।']},
+ {when:'ভবিষ্যতে কোনো কাজ হবে। যেমন: আমি আগামীকাল ভাত খাব।',
+  clue:'ক্রিয়ার শেষে ব / বে / বেন: খাব, করবে, যাবেন।',
+  words:['tomorrow','next week','soon','later'],
+  f:['Subject','will','V1','বাকি অংশ'],neg:'Subject + will not + V1',q:'Will + Subject + V1 ...?',
+  negEx:['She will not eat rice tomorrow.','সে আগামীকাল ভাত খাবে না।'],
+  notes:['সব subject-এর সাথে will, তারপর V1।','will-এর পরে verb-এ s বসে না: She will eats ✗, She will eat ✓।']},
+ {when:'ভবিষ্যতের কোনো সময়ে যে কাজ চলতে থাকবে। যেমন: আগামীকাল এই সময়ে আমি ভাত খেতে থাকব।',
+  clue:'ক্রিয়ার শেষে "তে থাকব / থাকবে": খেতে থাকবে, করতে থাকব।',
+  words:['at this time tomorrow','at 8 pm tomorrow'],
+  f:['Subject','will be','V1+ing','বাকি অংশ'],neg:'Subject + will not + be + V1+ing',q:'Will + Subject + be + V1+ing ...?',
+  negEx:['She will not be eating rice at this time tomorrow.','সে আগামীকাল এই সময়ে ভাত খেতে থাকবে না।'],
+  notes:['সব subject-এর সাথে will be।','বাংলায় "তে থাকবে" (খেতে থাকবে) মানে Continuous, "য়ে থাকবে" (খেয়ে থাকবে) মানে Perfect।']},
+ {when:'ভবিষ্যতের কোনো সময়ের মধ্যে যে কাজ শেষ হয়ে যাবে। যেমন: আগামীকালের মধ্যে আমি বইটি পড়ে থাকব।',
+  clue:'ক্রিয়ার শেষে "য়ে থাকব / এ থাকবে": খেয়ে থাকবে, করে থাকব।',
+  words:['by tomorrow','by evening','by next year'],
+  f:['Subject','will have','V3','বাকি অংশ'],neg:'Subject + will not + have + V3',q:'Will + Subject + have + V3 ...?',
+  negEx:['She will not have eaten rice by tomorrow.','সে আগামীকালের মধ্যে ভাত খেয়ে থাকবে না।'],
+  notes:['সব subject-এর সাথে will have।','সাধারণত "মধ্যে" (by) থাকে: by tomorrow, by evening।']},
+ {when:'ভবিষ্যতের কোনো সময় পর্যন্ত একটা কাজ কিছু সময় ধরে চলতে থাকবে। যেমন: আমি দুই ঘণ্টা ধরে পড়তে থাকব।',
+  clue:'"তে থাকবে", সাথে সময় থাকে: "ধরে"।',
+  words:['for two hours','for a year'],
+  f:['Subject','will have been','V1+ing','for + সময়'],neg:'Subject + will not + have been + V1+ing',q:'Will + Subject + have been + V1+ing ...?',
+  negEx:['She will not have been eating rice for two hours.','সে দুই ঘণ্টা ধরে ভাত খেতে থাকবে না।'],
+  notes:['সব subject-এর সাথে will have been।','এই tense খুব কম ব্যবহার হয়। আগে বাকি ১১টি ভালো করে শিখুন।']}
+];
+
+/* ---------- sentence building ---------- */
+function enVP(t,s,V){
+ const s3=s.ec==='s3', be=s.ec==='I'?'am':s3?'is':'are', was=s.ec==='pl'?'were':'was', hv=s3?'has':'have';
+ return [[s3?V.s:V.v],[be,V.ing],[hv,V.v3],[hv,'been',V.ing],[V.v2],[was,V.ing],['had',V.v3],['had','been',V.ing],['will',V.v],['will','be',V.ing],['will','have',V.v3],['will','have','been',V.ing]][t];
+}
+const cap=w=>w[0].toUpperCase()+w.slice(1);
+const lowerSubj=en=>KEEPCAP.includes(en)?en:en[0].toLowerCase()+en.slice(1);
+function make(t,s,V,o,m,isQ){
+ const vp=enVP(t,s,V), objW=o[1]?o[1].split(' '):[], endM=(m.en&&m.pos!=='mid')?m.en.split(' '):[];
+ const subW=s.en.split(' '), sw=subW.length;
+ let words,vi=[];
+ if(!isQ){
+  const v=vp.slice(); if(m.pos==='mid'&&m.en)v.splice(1,0,m.en);
+  words=[...subW,...v,...objW,...endM];
+  for(let i=0;i<v.length;i++)if(!(m.pos==='mid'&&i===1&&m.en))vi.push(sw+i);
+ }else{
+  let head,rest;
+  if(t===0){head=s.ec==='s3'?'Does':'Do';rest=[V.v]}
+  else if(t===4){head='Did';rest=[V.v]}
+  else{head=cap(vp[0]);rest=vp.slice(1)}
+  const sl=lowerSubj(s.en).split(' ');
+  const r2=(m.pos==='mid'&&m.en)?[m.en,...rest]:rest;
+  words=[head,...sl,...r2,...objW,...endM];
+  vi.push(0);const st=1+sl.length+(r2.length-rest.length);for(let i=0;i<rest.length;i++)vi.push(st+i);
+ }
+ const bv=(V.pre||'')+bnV(V.b,t,s.p);
+ const parts=[];if(m.pos==='pre'&&m.bn)parts.push(m.bn);
+ parts.push(s.bn);if(isQ)parts.push('কি');
+ if(m.pos!=='pre'&&m.bn)parts.push(m.bn);
+ if(o[0])parts.push(o[0]);
+ const end=isQ?'?':'।', pe=isQ?'?':'.';
+ return {t,s,V,o,m,isQ,vp,words,sw,bv,
+  en:words.join(' ')+pe,
+  enHtml:words.map((w,i)=>vi.includes(i)?'<b>'+esc(w)+'</b>':esc(w)).join(' ')+pe,
+  bn:parts.join(' ')+' '+bv+end,
+  bnHtml:esc(parts.join(' '))+' <b>'+esc(bv)+'</b>'+end};
+}
+function genItem(t,o){
+ o=o||{};
+ const vs=[3,7,11].includes(t)?VERBS.filter(v=>!v.nd):VERBS, V=rnd(vs);
+ const ms=o.noMid?MK[t].filter(m=>m.pos!=='mid'):MK[t];
+ return make(t,rnd(S),V,rnd(V.o),rnd(ms),!!o.q);
+}
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const bnd=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const bnN=n=>bnd(Number(n).toLocaleString('en-US'));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const uniq=a=>[...new Set(a)];
+const chips=a=>`<div class="chips">${a.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`;
+const formula=a=>`<div class="formula">${a.map(p=>`<span>${esc(p)}</span>`).join('<i>+</i>')}</div>`;
+const pickW=o=>{const k=Object.keys(o);let r=Math.random()*k.reduce((a,x)=>a+o[x],0);for(const x of k){r-=o[x];if(r<=0)return x}return k[0]};
+const regEd=v=>/e$/.test(v)?v+'d':/[^aeiou]y$/.test(v)?v.slice(0,-1)+'ied':v+'ed';
+
+/* ---------- storage ---------- */
+const KEY='shraboni-tense-v2';
+const fresh=()=>({t:Array.from({length:12},()=>[0,0]),ty:{},days:[],read:[]});
+let store=fresh();
+try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.t)store=Object.assign(fresh(),r);
+ else{const o=JSON.parse(localStorage.getItem('tense-khata-v1'));if(o&&o.s){['pi','pc','pp','ppc'].forEach((k,i)=>{if(o.s[k])store.t[i]=o.s[k].slice()});store.days=o.days||[]}}}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){}};
+const acc=t=>{const[c,n]=store.t[t];return n?c/n:0};
+
+/* ---------- chapters ---------- */
+const CH=[
+ {id:'intro',ti:'Tense কী?',sub:'৩টি কাল, ৪টি রূপ, ১২টি tense-এর ছক'},
+ {id:'subj',ti:'Subject আর সাহায্যকারী verb',sub:'am, is, are, was, were, has, have, do, does'},
+ {id:'verb',ti:'Verb-এর ৫টি রূপ',sub:'V1, V2, V3, ing, s/es'},
+ {id:'chena',ti:'বাংলা দেখে tense চেনা',sub:'৩ ধাপের সহজ কৌশল'},
+ ...Array.from({length:12},(_,t)=>({id:'t'+t,ti:tname(t),sub:tbn(t)})),
+ {id:'sum',ti:'সব সূত্র একসাথে',sub:'১২টি tense-এর গঠন এক পাতায়'}
+];
+const GROUPS=[['ভিত্তি',['intro','subj','verb','chena']],['বর্তমান (Present)',['t0','t1','t2','t3']],['অতীত (Past)',['t4','t5','t6','t7']],['ভবিষ্যৎ (Future)',['t8','t9','t10','t11']],['শেষে',['sum']]];
+
+/* ---------- state ---------- */
+let view, tab='learn', lesson=null, sess=null;
+let setup={type:'mix',scope:'present',len:20};
+
+/* ---------- timeline drawing ---------- */
+function tl(t){
+ const g=t>>2,a=t&3,ref=[170,85,265][g];
+ let m='';
+ if(a===0)m=g===0?[40,80,125,170,215,260,300].map(x=>`<circle class="mark" cx="${x}" cy="30" r="4.5"/>`).join(''):`<circle class="mark" cx="${ref}" cy="30" r="6"/>`;
+ if(a===1)m=`<rect class="mark" x="${ref-24}" y="24" width="48" height="12" rx="6"/>`;
+ if(a===2)m=`<circle class="mark" cx="${ref-40}" cy="30" r="6"/><path class="dash" d="M${ref-34} 30 H${ref}"/>`;
+ if(a===3)m=`<rect class="mark" x="${ref-62}" y="24" width="62" height="12" rx="6"/>`;
+ const r=g?`<path class="ref" d="M${ref} 14 V46"/><text x="${ref}" y="10" text-anchor="middle">তখন</text>`:'';
+ return `<svg class="tl" viewBox="0 0 340 68" role="img" aria-label="সময়রেখা"><path class="axis" d="M10 30 H330"/><path class="now" d="M170 14 V46"/>${r}${m}<text x="10" y="64">অতীত</text><text x="170" y="64" text-anchor="middle">এখন</text><text x="330" y="64" text-anchor="end">ভবিষ্যৎ</text></svg>`;
+}
+
+/* ---------- learn: index ---------- */
+function renderIndex(){
+ const next=CH.find(c=>!store.read.includes(c.id));
+ const n=CH.findIndex(c=>c.id===(next&&next.id));
+ view.innerHTML=`
+ <div class="stack tight"><h2>পাঠের তালিকা</h2>
+ <p class="sub">ওপর থেকে নিচে একটা একটা করে পড়ুন। প্রতিটি tense-এর পাঠ শেষে সেটার অনুশীলন করুন। পড়া হয়েছে ${bnd(store.read.length)} / ${bnd(CH.length)}টি পাঠ।</p></div>
+ ${GROUPS.map(([g,ids])=>`<section class="lgroup"><h3>${g}</h3>${ids.map(id=>{const i=CH.findIndex(c=>c.id===id),c=CH[i],done=store.read.includes(id);
+  return `<button class="lrow ${i===n?'next':''}" data-open="${id}"><span class="ln">${bnd(i+1)}</span><span class="lt">${esc(c.ti)}<small>${esc(c.sub)}</small></span>${done?'<span class="done">✓ পড়া</span>':i===n?'<span class="start">এখান থেকে</span>':'<span></span>'}</button>`}).join('')}</section>`).join('')}`;
+}
+
+/* ---------- learn: chapters ---------- */
+function chIntro(){
+ const I=SUB('I'),eat=VERBS[0],rice=eat.o[0],none={bn:'',en:''};
+ return `
+ <div class="sec"><p>Tense মানে ক্রিয়ার কাল, অর্থাৎ কাজটা <b>কখন</b> হয় আর কাজটা <b>কোন অবস্থায়</b> আছে। বাংলায় আমরা এটা না ভেবেই বলি: খাই, খাচ্ছি, খেয়েছি, খেলাম, খাব। ইংরেজিতে প্রতিটির আলাদা নাম আর আলাদা গঠন আছে।</p></div>
+ <div class="sec"><h3>৩টি কাল</h3><ul class="notes">
+  <li><b>Present</b> (বর্তমান): এখন বা সবসময়।</li><li><b>Past</b> (অতীত): আগে হয়ে গেছে।</li><li><b>Future</b> (ভবিষ্যৎ): পরে হবে।</li></ul></div>
+ <div class="sec"><h3>প্রতিটি কালের ৪টি রূপ</h3><ul class="notes">
+  <li><b>Indefinite</b> (সাধারণ): সাধারণভাবে কাজটা হয়। খাই, খেলাম, খাব।</li>
+  <li><b>Continuous</b> (ঘটমান): কাজটা চলছে। খাচ্ছি, খাচ্ছিলাম, খেতে থাকব।</li>
+  <li><b>Perfect</b> (পুরাঘটিত): কাজটা শেষ হয়ে গেছে। খেয়েছি, খেয়েছিলাম, খেয়ে থাকব।</li>
+  <li><b>Perfect Continuous</b> (পুরাঘটিত ঘটমান): কাজটা আগে শুরু হয়ে কিছু সময় ধরে চলছে। দুই ঘণ্টা ধরে খাচ্ছি।</li></ul>
+  <p>৩টি কাল × ৪টি রূপ = <b>১২টি tense</b>।</p></div>
+ <div class="sec"><h3>১২টি tense-এর ছক</h3>
+  <div class="scroll"><table class="chart"><thead><tr><th></th>${TIME.map((x,g)=>`<th>${TIME_BN[g]}<br><small>${x}</small></th>`).join('')}</tr></thead><tbody>
+  ${[0,1,2,3].map(a=>`<tr><th>${ASP_BN[a]}<br><small>${ASP[a]}</small></th>${[0,1,2].map(g=>{const t=g*4+a,m=[3,7,11].includes(t)?MK[t][0]:none,it=make(t,I,eat,rice,m,false);
+   return `<td><button data-open="t${t}"><span class="cbn">${esc(it.bn)}</span><span class="cen">${esc(it.en)}</span></button></td>`}).join('')}</tr>`).join('')}
+  </tbody></table></div>
+  <p class="sub">ছকের যেকোনো ঘরে চাপ দিলে সেই tense-এর পাঠ খুলবে। ফোনে ছকটা ডানে-বামে সরানো যায়।</p></div>
+ <div class="callout"><strong>কীভাবে শিখবেন</strong><ul class="notes">
+  <li>প্রথমে ১ থেকে ৪ নম্বর পাঠ পড়ুন। এগুলো সব tense-এর ভিত্তি।</li>
+  <li>তারপর Present-এর ৪টি পাঠ। প্রতিটি পড়ে ২০টি প্রশ্ন অনুশীলন করুন।</li>
+  <li>Present-এ ৮০% ঠিক হলে Past-এ যান, তারপর Future।</li>
+  <li>প্রতিদিন অল্প অল্প করে। ১৫ মিনিট রোজ, এক দিনে ২ ঘণ্টার চেয়ে ভালো।</li></ul></div>`;
+}
+function chSubj(){
+ const rows=[['I','আমি','am','was','have','do'],['We','আমরা','are','were','have','do'],['You','তুমি / আপনি / তোমরা','are','were','have','do'],['He / She / It','সে / এটি','is','was','has','does'],['They','তারা','are','were','have','do'],['একজনের নাম: Rina','রিনা, আমার মা','is','was','has','does'],['অনেকজন: The children','শিশুরা','are','were','have','do']];
+ return `
+ <div class="sec"><h3>Subject (কর্তা) কী?</h3><p>যে কাজটা করে, সেই হলো subject। বাক্যের শুরুতে থাকে। "<b>রিনা</b> ভাত খায়" বাক্যে subject রিনা।</p></div>
+ <div class="sec"><h3>সাহায্যকারী verb কী?</h3><p>মূল verb-এর আগে বসে tense বোঝায়: <b>am, is, are, was, were, has, have, had, do, does, did, will</b>। কোনটা বসবে, তা নির্ভর করে subject-এর ওপর।</p></div>
+ <div class="sec"><h3>কোন subject-এর সাথে কোনটা</h3>
+ <div class="scroll"><table><thead><tr><th>Subject</th><th>বাংলা</th><th>Present-এ</th><th>Past-এ</th><th>Perfect-এ</th><th>প্রশ্নে</th></tr></thead><tbody>
+ ${rows.map(r=>`<tr><td class="nowrap"><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td></tr>`).join('')}
+ </tbody></table></div></div>
+ <div class="callout"><strong>সহজে মনে রাখুন</strong><ul class="notes">
+  <li>একজন মানুষ বা একটা জিনিস (he, she, it, রিনা, আমার মা) মানে <b>is, was, has, does</b>।</li>
+  <li>I-এর সাথে <b>am</b> আর <b>was</b>, কিন্তু <b>have</b> আর <b>do</b>।</li>
+  <li>অনেকজন বা you মানে <b>are, were, have, do</b>।</li>
+  <li><b>had, did, will</b> সব subject-এর সাথে একই।</li></ul></div>`;
+}
+function chVerb(){
+ const list=VERBS.slice().sort((a,b)=>a.v.localeCompare(b.v));
+ return `
+ <div class="sec"><p>প্রতিটি ইংরেজি verb-এর ৫টি রূপ আছে। কোন tense-এ কোন রূপ বসে, সেটা জানলেই অর্ধেক কাজ শেষ।</p></div>
+ <div class="sec"><div class="scroll"><table><thead><tr><th>রূপ</th><th>উদাহরণ</th><th>কোথায় বসে</th></tr></thead><tbody>
+  <tr><td class="nowrap"><b>V1</b> (মূল রূপ)</td><td>eat</td><td>Present Indefinite; will, do, does, did-এর পরে</td></tr>
+  <tr><td class="nowrap"><b>V1+s/es</b></td><td>eats</td><td>Present Indefinite-এ একজন (he, she, it) হলে</td></tr>
+  <tr><td class="nowrap"><b>V2</b> (অতীত রূপ)</td><td>ate</td><td>শুধু Past Indefinite-এ</td></tr>
+  <tr><td class="nowrap"><b>V3</b> (তৃতীয় রূপ)</td><td>eaten</td><td>সব Perfect tense-এ: have, has, had-এর পরে</td></tr>
+  <tr><td class="nowrap"><b>V1+ing</b></td><td>eating</td><td>সব Continuous আর Perfect Continuous-এ</td></tr>
+ </tbody></table></div></div>
+ <div class="sec"><h3>s / es বসানোর নিয়ম</h3><ul class="notes">
+  <li>শেষে s, sh, ch, x, o থাকলে es: wash → washes, watch → watches, go → goes।</li>
+  <li>শেষে ব্যঞ্জন + y থাকলে y বাদ দিয়ে ies: study → studies।</li>
+  <li>বাকি সব ক্ষেত্রে শুধু s: eat → eats, play → plays।</li></ul></div>
+ <div class="sec"><h3>ing বসানোর নিয়ম</h3><ul class="notes">
+  <li>শেষে e থাকলে e বাদ: make → making, write → writing।</li>
+  <li>ছোট verb-এর শেষে একটা স্বরবর্ণ আর একটা ব্যঞ্জন হলে শেষ অক্ষর দুইবার: run → running, cut → cutting।</li>
+  <li>বাকি সব সরাসরি ing: eat → eating, play → playing।</li></ul></div>
+ <div class="sec"><h3>V2 আর V3 বানানোর নিয়ম</h3><ul class="notes">
+  <li>বেশিরভাগ verb-এ ed: cook → cooked, play → played। শেষে e থাকলে শুধু d।</li>
+  <li>ব্যঞ্জন + y হলে ied: study → studied।</li>
+  <li>কিছু verb নিয়ম মানে না, মুখস্থ করতে হয়: eat → ate → eaten, go → went → gone। নিচের তালিকায় এগুলো নীল রঙে।</li></ul></div>
+ <div class="sec"><h3>এই অ্যাপের ${bnd(list.length)}টি verb</h3>
+ <div class="scroll"><table><thead><tr><th>V1</th><th>V2</th><th>V3</th><th>V1+ing</th><th>অর্থ</th></tr></thead><tbody>
+ ${list.map(V=>`<tr class="${V.v2!==regEd(V.v)?'irr':''}"><td>${V.v}</td><td>${V.v2}</td><td>${V.v3}</td><td>${V.ing}</td><td>${esc(V.bn)}</td></tr>`).join('')}
+ </tbody></table></div></div>`;
+}
+function chChena(){
+ return `
+ <div class="sec"><p>বাংলা বাক্যটা আপনি পড়েই বোঝেন। শুধু দেখতে হবে বাক্যের <b>ক্রিয়া</b> (শেষের শব্দ) কেমন। এই ৩টি ধাপে যেকোনো বাক্যের tense বের করা যায়।</p></div>
+ <div class="callout"><strong>ধাপ ১: ক্রিয়া খুঁজুন</strong><p>বাংলা বাক্যের শেষের শব্দটাই সাধারণত ক্রিয়া। "সে এখন ভাত <b>খাচ্ছে</b>"।</p></div>
+ <div class="callout"><strong>ধাপ ২: কাল ঠিক করুন</strong><ul class="notes">
+  <li>কাজটা পরে হবে (ব / বে / বেন, বা "থাকবে") → <b>Future</b></li>
+  <li>কাজটা আগে হয়ে গেছে (লাম / ল / লেন, বা "ছিল") → <b>Past</b></li>
+  <li>বাকি সব → <b>Present</b></li></ul></div>
+ <div class="callout"><strong>ধাপ ৩: রূপ ঠিক করুন</strong><ul class="notes">
+  <li>ক্রিয়ায় "ছ" নেই, "থাক" নেই (খায়, খেলাম, খাব) → <b>Indefinite</b></li>
+  <li>"ছ" আছে, ছ-এর আগে এ-কার নেই (খাচ্ছে, খাচ্ছিল), বা "তে থাকবে" → <b>Continuous</b></li>
+  <li>ছ-এর আগে এ-কার আছে (খেয়েছে, খেয়েছিল), বা "য়ে থাকবে" → <b>Perfect</b></li>
+  <li>Continuous-এর মতো, কিন্তু সাথে "ধরে" বা "থেকে" → <b>Perfect Continuous</b></li></ul></div>
+ <div class="sec"><h3>সবচেয়ে কাজের নিয়ম: ছ-এর আগে এ-কার</h3>
+  <div class="pair"><p>করছে → Continuous</p><p>করেছে → Perfect</p><p>দেখছি → Continuous</p><p>দেখেছি → Perfect</p><p>খাচ্ছিল → Continuous</p><p>খেয়েছিল → Perfect</p></div></div>
+ <div class="sec"><h3>১২টি tense-এর বাংলা চিহ্ন</h3>
+ <div class="scroll"><table><thead><tr><th>Tense</th><th>উদাহরণ</th><th>চিহ্ন</th></tr></thead><tbody>
+ ${TD.map((d,t)=>`<tr><td class="nowrap"><b>${tname(t)}</b><br><small class="sub">${tbn(t)}</small></td><td class="nowrap">সে ${[3,7,11].includes(t)?'দুই ঘণ্টা ধরে ':''}${bnV('খা',t,2)}</td><td>${esc(d.clue)}</td></tr>`).join('')}
+ </tbody></table></div></div>
+ <div class="sec"><h3>ইংরেজি বাক্যে চিহ্ন-শব্দ</h3><p class="sub">ইংরেজি বাক্যে এই শব্দগুলো দেখলে tense আন্দাজ করা যায়।</p>
+ <div class="scroll"><table><thead><tr><th>Tense</th><th>চিহ্ন-শব্দ</th></tr></thead><tbody>
+ ${TD.map((d,t)=>`<tr><td class="nowrap">${tname(t)}</td><td>${esc(d.words.join(', '))}</td></tr>`).join('')}
+ </tbody></table></div></div>`;
+}
+function chSum(){
+ const she=SUB('She'),eat=VERBS[0],rice=eat.o[0];
+ return `
+ <div class="sec"><div class="scroll"><table><thead><tr><th>Tense</th><th>গঠন</th><th>উদাহরণ</th></tr></thead><tbody>
+ ${TD.map((d,t)=>{const it=make(t,she,eat,rice,MK[t][0],false);return `<tr><td class="nowrap"><b>${tname(t)}</b><br><small class="sub">${tbn(t)}</small></td><td>${esc(d.f.join(' + '))}</td><td>${it.enHtml}<br><small class="sub">${esc(it.bn)}</small></td></tr>`}).join('')}
+ </tbody></table></div></div>
+ <div class="callout"><strong>না-বোধক বাক্য</strong><ul class="notes">
+  <li>সাহায্যকারী verb থাকলে তার ঠিক পরে not: She is <b>not</b> eating। She has <b>not</b> eaten।</li>
+  <li>Present Indefinite-এ do not / does not, Past Indefinite-এ did not। তারপর V1।</li></ul></div>
+ <div class="callout"><strong>প্রশ্নবোধক বাক্য</strong><ul class="notes">
+  <li>প্রথম সাহায্যকারী verb বাক্যের শুরুতে চলে যায়: <b>Is</b> she eating? <b>Has</b> she eaten?</li>
+  <li>Present Indefinite-এ Do / Does, Past Indefinite-এ Did দিয়ে শুরু। তারপর V1।</li></ul></div>`;
+}
+function chTense(t){
+ const d=TD[t],she=SUB('She'),eat=VERBS[0],rice=eat.o[0];
+ const vs=[3,7,11].includes(t)?VERBS.filter(v=>!v.nd):VERBS;
+ const ex=[0,1,2,3].map(k=>{const s=S[(t*3+k*5)%S.length],V=vs[(t*7+k*11+3)%vs.length];return make(t,s,V,V.o[k%V.o.length],MK[t][k%MK[t].length],false)});
+ const pc=[3,7,11].includes(t)?MK[t][0].bn+' ':'';
+ const persons=['আমি','তুমি','সে','আপনি'].map((x,p)=>x+' '+pc+bnV('খা',t,p));
+ const subjRows=['I','She','They'].map(e=>{const s=SUB(e);return [s.en,enVP(t,s,eat).join(' ')]});
+ const qEx=make(t,she,eat,rice,MK[t][0],true);
+ return `
+ <div class="sec"><h3>কখন ব্যবহার হয়</h3><p>${esc(d.when)}</p>${tl(t)}</div>
+ <div class="sec"><h3>বাংলা দেখে চেনার উপায়</h3><p>${esc(d.clue)}</p><div class="chips">${persons.map(x=>`<span>${esc(x)}</span>`).join('')}</div></div>
+ <div class="sec"><h3>ইংরেজি গঠন</h3>${formula(d.f)}</div>
+ <div class="sec"><h3>Subject বদলালে</h3><ul class="ex">${subjRows.map(r=>`<li class="en">${esc(r[0])} <b>${esc(r[1])}</b> rice.</li>`).join('')}</ul></div>
+ <div class="sec"><h3>উদাহরণ</h3><ul class="ex">${ex.map(it=>`<li><div class="en">${it.enHtml}</div><div class="bn">${esc(it.bn)}</div></li>`).join('')}</ul></div>
+ <div class="sec"><h3>না-বোধক</h3><p class="sub">${esc(d.neg)}</p><ul class="ex"><li><div class="en">${esc(d.negEx[0])}</div><div class="bn">${esc(d.negEx[1])}</div></li></ul></div>
+ <div class="sec"><h3>প্রশ্ন</h3><p class="sub">${esc(d.q)}</p><ul class="ex"><li><div class="en">${qEx.enHtml}</div><div class="bn">${esc(qEx.bn)}</div></li></ul></div>
+ <div class="sec"><h3>চিহ্ন-শব্দ</h3>${chips(d.words)}</div>
+ <div class="sec"><h3>মনে রাখুন</h3><ul class="notes">${d.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>`;
+}
+const PRACT={intro:null,subj:['aux','present','সাহায্যকারী verb অনুশীলন করুন'],verb:['vf','all','V1 V2 V3 অনুশীলন করুন'],chena:['id','present','Tense চেনা অনুশীলন করুন'],sum:['mix','all','১২টি মিলিয়ে অনুশীলন করুন']};
+function renderLesson(){
+ const i=CH.findIndex(c=>c.id===lesson),c=CH[i];
+ if(!store.read.includes(c.id)){store.read.push(c.id);save()}
+ const m=/^t(\d+)$/.exec(c.id), t=m?+m[1]:-1;
+ const body=t>=0?chTense(t):{intro:chIntro,subj:chSubj,verb:chVerb,chena:chChena,sum:chSum}[c.id]();
+ const pr=t>=0?['mix','t'+t,'এই tense অনুশীলন করুন']:PRACT[c.id];
+ const prev=CH[i-1],next=CH[i+1];
+ view.innerHTML=`
+ <button class="link" data-index>← সব পাঠ</button>
+ <article class="sheet">
+  <div class="stack tight"><span class="qtype">পাঠ ${bnd(i+1)} / ${bnd(CH.length)}</span><h2>${esc(c.ti)}</h2><p class="sub">${esc(c.sub)}</p></div>
+  ${body}
+  ${pr?`<button class="btn" data-practice="${pr[0]}:${pr[1]}">${pr[2]}</button>`:''}
+ </article>
+ <div class="row between">${prev?`<button class="btn ghost" data-open="${prev.id}">← আগের পাঠ</button>`:'<span></span>'}${next?`<button class="btn ghost" data-open="${next.id}">পরের পাঠ: ${esc(next.ti)} →</button>`:''}</div>`;
+}
+
+/* ---------- practice ---------- */
+const TYPESETS={mix:{idbn:3,iden:2,mcq:2,fill:1,aux:2,arr:2,vf:1},id:{idbn:2,iden:1},form:{mcq:1,fill:1},aux:{aux:1},arr:{arr:1},vf:{vf:1}};
+const TYN={idbn:'Tense চেনা (বাংলা বাক্য)',iden:'Tense চেনা (ইংরেজি বাক্য)',mcq:'ঠিক রূপ বাছাই',fill:'শূন্যস্থান পূরণ',aux:'সাহায্যকারী verb',arr:'বাক্য সাজানো',vf:'V1 V2 V3'};
+const QH={idbn:'এই বাংলা বাক্যটি কোন tense?',iden:'এই ইংরেজি বাক্যটি কোন tense?',mcq:'ঠিক রূপটি বাছুন',fill:'শূন্যস্থানে verb-এর ঠিক রূপ লিখুন',aux:'ঠিক সাহায্যকারী verb বাছুন',arr:'শব্দ সাজিয়ে ইংরেজি বাক্য বানান',vf:'verb-এর ঠিক রূপ বাছুন'};
+const AUXO=[['Do','Does','Did','Is'],['am','is','are','was'],['has','have','had','is'],['has','have','had','is'],['Did','Do','Does','Was'],['was','were','is','are'],['had','has','have','was'],['had','has','have','was'],['will','is','has','was'],['will','is','has','was'],['will','is','has','was'],['will','is','has','was']];
+const VFL={v2:'V2 (অতীত রূপ)',v3:'V3 (তৃতীয় রূপ)',ing:'ing রূপ',s:'s/es রূপ'};
+function scopeList(sc){
+ if(sc==='present')return[0,1,2,3];if(sc==='past')return[4,5,6,7];if(sc==='future')return[8,9,10,11];
+ if(sc==='all')return[0,1,2,3,4,5,6,7,8,9,10,11];
+ if(sc==='weak'){const tried=[...Array(12).keys()].filter(t=>store.t[t][1]>0);if(tried.length<4)return[0,1,2,3];return tried.sort((a,b)=>acc(a)-acc(b)).slice(0,4).sort((a,b)=>a-b)}
+ const m=/^t(\d+)$/.exec(sc);return m?[+m[1]]:[0,1,2,3];
+}
+function pickTense(list){const w={};list.forEach(t=>{const n=store.t[t][1];w[t]=n?1+3*(1-acc(t)):2});return +pickW(w)}
+function confusers(t){const g=t>>2,a=t&3,r=[];for(let x=0;x<4;x++)if(x!==a)r.push(g*4+x);for(let y=0;y<3;y++)if(y!==g)r.push(y*4+a);return r}
+function buildQ(type,t,list){
+ if(type==='vf'){
+  const V=rnd(VERBS),k=rnd(['v2','v3','ing','s']),ans=V[k];
+  const pool=uniq([V.v,V.v2,V.v3,V.ing,V.s,V.v+'ed',V.v.replace(/e$/,'')+'ed',V.v+'ing',V.v+'s',V.v+'es']).filter(x=>x!==ans);
+  return {type,t:-1,V,k,ans,opts:shuffle([ans,...shuffle(pool).slice(0,3)]),key:'vf|'+V.v+k};
+ }
+ const isQ=type==='arr'?Math.random()<.25:(type==='aux'&&(t===0||t===4));
+ const it=genItem(t,{noMid:['mcq','fill','aux'].includes(type),q:isQ});
+ const q={type,t,it,key:type+'|'+it.en};
+ if(type==='idbn'||type==='iden')q.choices=list.length>1?list:[0,1,2,3].map(a=>(t>>2)*4+a);
+ if(type==='mcq'){q.ans=it.vp.join(' ');const c=uniq(shuffle(confusers(t)).map(x=>enVP(x,it.s,it.V).join(' '))).filter(x=>x!==q.ans);q.opts=shuffle([q.ans,...c.slice(0,3)])}
+ if(type==='fill')q.ans=it.vp.join(' ');
+ if(type==='aux'){q.ai=isQ?0:it.sw;q.ans=it.words[q.ai];q.opts=AUXO[t]}
+ if(type==='arr'){const w=it.words.slice();if(!KEEPCAP.includes(w[0]))w[0]=w[0].toLowerCase();q.words=w;q.tray=shuffle(w.map(x=>({x})));q.built=[]}
+ return q;
+}
+function startSession(){
+ const list=scopeList(setup.scope),set=Object.assign({},TYPESETS[setup.type]);
+ if(list.length===1&&setup.type==='mix'){delete set.idbn;delete set.iden}
+ const seen=new Set(),qs=[];
+ for(let i=0;i<setup.len;i++){let q;for(let k=0;k<30;k++){q=buildQ(pickW(set),pickTense(list),list);if(!seen.has(q.key))break}seen.add(q.key);qs.push(q)}
+ sess={qs,i:0,right:0,wrong:[],done:false,answered:false};
+ tab='practice';render();window.scrollTo(0,0);
+}
+function agree(t,s,V,isQ){
+ const n=esc(s.en),one=s.ec==='s3',I=s.ec==='I';
+ if(t===0)return isQ?(one?`${n} একজন, তাই প্রশ্নে Does। Does-এর পরে verb-এ s বসে না।`:`${n}-এর সাথে প্রশ্নে Do।`):(one?`${n} একজন (he/she-এর মতো), তাই verb-এ s/es: ${V.v} → ${V.s}।`:`${n}-এর সাথে verb-এ s/es বসে না।`);
+ if(t===1)return I?'I-এর সাথে সবসময় am।':one?`${n} একজন, তাই is।`:`${n}-এর সাথে are।`;
+ if(t===5)return (I||one)?`${n}-এর সাথে was।`:`${n}-এর সাথে were।`;
+ if(t===2||t===3)return one?`${n} একজন, তাই has।`:`${n}-এর সাথে have।`;
+ if(t===4)return isQ?'প্রশ্নে Did, তারপর verb-এর V1।':`অতীত রূপ (V2): ${V.v} → ${V.v2}।`;
+ if(t===6||t===7)return 'সব subject-এর সাথে had।';
+ return 'সব subject-এর সাথে will।';
+}
+function why(q){
+ if(q.type==='vf'){const V=q.V;return `<div><b>${V.v}</b> (${esc(V.bn)}): ${V.v} · ${V.v2} · ${V.v3} · ${V.ing} · ${V.s}</div><div class="sub">ক্রম: V1 · V2 · V3 · ing · s/es</div>`}
+ const it=q.it,t=q.t;
+ return `<div><b>${tname(t)}</b> (${tbn(t)})</div>
+ <div>বাংলা ক্রিয়া <b>${esc(it.bv)}</b>: ${esc(TD[t].clue)}</div>
+ <div>গঠন: ${esc(TD[t].f.join(' + '))}</div>
+ <div>${agree(t,it.s,it.V,it.isQ)}</div>`;
+}
+function blanked(it,start,len){
+ const w=it.words,pe=it.isQ?'?':'.';
+ return esc(w.slice(0,start).join(' '))+' <span class="gap">&nbsp;</span> '+esc(w.slice(start+len).join(' ')).trim()+pe;
+}
+function grade(ok){
+ const q=sess.qs[sess.i];
+ sess.answered=true;q.ok=ok;
+ if(q.t>=0){store.t[q.t][1]++;if(ok)store.t[q.t][0]++}
+ const ty=store.ty[q.type]||(store.ty[q.type]=[0,0]);ty[1]++;if(ok)ty[0]++;
+ if(ok)sess.right++;else sess.wrong.push(q);
+ const d=new Date(),day=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+ if(!store.days.includes(day))store.days.push(day);
+ save();
+}
+function idOpts(q,a){
+ const cls=i=>a?(i===q.t?'right':i===q.pick?'wrong':''):'';
+ if(q.choices.length===12)return `<div class="tgrid">${TIME.map((tm,g)=>`<div class="tcol"><div class="th">${TIME_BN[g]}<small>${tm}</small></div>${[0,1,2,3].map(x=>{const i=g*4+x;return `<button data-tid="${i}" ${a?'disabled':''} class="${cls(i)}">${ASP[x]}</button>`}).join('')}</div>`).join('')}</div>`;
+ return `<div class="opts">${q.choices.map(i=>`<button data-tid="${i}" ${a?'disabled':''} class="${cls(i)}">${tname(i)} <span class="sub">(${tbn(i)})</span></button>`).join('')}</div>`;
+}
+function strOpts(q,a,two){
+ return `<div class="opts ${two?'two':''}">${q.opts.map(o=>`<button data-opt="${esc(o)}" ${a?'disabled':''} class="${a?(o===q.ans?'right':o===q.pick?'wrong':''):''}">${esc(o)}</button>`).join('')}</div>`;
+}
+function renderSetup(){
+ const P=(k,v)=>setup[k]===v;
+ const totalSent=S.length*VERBS.reduce((a,V)=>a+V.o.length,0)*MK.reduce((a,m)=>a+m.length,0);
+ const single=/^t\d+$/.test(setup.scope);
+ view.innerHTML=`
+ <div class="stack tight"><h2>অনুশীলন</h2><p class="sub">প্রশ্ন প্রতিবার নতুন করে তৈরি হয়, মোট ${bnN(Math.floor(totalSent/1000)*1000)}-এর বেশি আলাদা বাক্য। যেখানে ভুল বেশি হয়, সেখান থেকে বেশি প্রশ্ন আসে।</p></div>
+ ${store.read.length<4?`<div class="callout"><strong>একদম নতুন?</strong><p>আগে "শিখুন" থেকে প্রথম ৪টি পাঠ পড়ুন। তারপর এখানে "Tense চেনা" আর "Present-এর ৪টি" বেছে শুরু করুন।</p></div>`:''}
+ <div class="sec"><h3>কী অনুশীলন করবেন</h3><div class="pick">
+  <button class="wide" data-set="type:mix" aria-pressed="${P('type','mix')}">সব ধরন মিলিয়ে<small>চেনা, শূন্যস্থান, বাক্য সাজানো সব একসাথে</small></button>
+  <button data-set="type:id" aria-pressed="${P('type','id')}">Tense চেনা<small>বাক্য দেখে বলুন কোন tense</small></button>
+  <button data-set="type:form" aria-pressed="${P('type','form')}">Verb-এর ঠিক রূপ<small>শূন্যস্থান পূরণ</small></button>
+  <button data-set="type:aux" aria-pressed="${P('type','aux')}">সাহায্যকারী verb<small>am/is/are, has/have, do/does</small></button>
+  <button data-set="type:arr" aria-pressed="${P('type','arr')}">বাক্য সাজানো<small>বাংলা থেকে ইংরেজি</small></button>
+  <button class="wide" data-set="type:vf" aria-pressed="${P('type','vf')}">V1 V2 V3<small>verb-এর রূপ মুখস্থ: eat, ate, eaten</small></button>
+ </div></div>
+ <div class="sec"><h3>কোন tense থেকে</h3><div class="pick">
+  <button data-set="scope:present" aria-pressed="${P('scope','present')}">Present-এর ৪টি<small>নতুনদের জন্য প্রথমে</small></button>
+  <button data-set="scope:past" aria-pressed="${P('scope','past')}">Past-এর ৪টি</button>
+  <button data-set="scope:future" aria-pressed="${P('scope','future')}">Future-এর ৪টি</button>
+  <button data-set="scope:all" aria-pressed="${P('scope','all')}">সব ১২টি</button>
+  <button class="wide" data-set="scope:weak" aria-pressed="${P('scope','weak')}">আমার দুর্বল ৪টি<small>যেগুলোতে সবচেয়ে বেশি ভুল হয়েছে</small></button>
+  ${single?`<button class="wide" aria-pressed="true">শুধু ${tname(+setup.scope.slice(1))}<small>পাঠ থেকে বাছা হয়েছে</small></button>`:''}
+ </div></div>
+ <div class="sec"><h3>কয়টি প্রশ্ন</h3><div class="pick four">
+  ${[10,20,50,100].map(n=>`<button data-set="len:${n}" aria-pressed="${setup.len===n}">${bnd(n)}টি</button>`).join('')}
+ </div></div>
+ <button class="btn" data-go>শুরু করুন</button>`;
+}
+function renderResult(){
+ const N=sess.qs.length,pct=Math.round(100*sess.right/N);
+ const cnt={};sess.wrong.forEach(q=>{if(q.t>=0)cnt[q.t]=(cnt[q.t]||0)+1});
+ const worst=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a])[0];
+ view.innerHTML=`
+ <div class="sheet">
+  <div><div class="big">${bnd(sess.right)} / ${bnd(N)}</div><p class="sub">${pct>=80?'খুব ভালো হয়েছে।':pct>=50?'ভালো চলছে। আরেকবার করলে আরও ভালো হবে।':'চিন্তা নেই। পাঠটা আরেকবার পড়ে আবার চেষ্টা করুন।'}</p></div>
+  ${worst!==undefined?`<div class="callout"><strong>সবচেয়ে বেশি ভুল: ${tname(+worst)}</strong><p>এই পাঠটা আরেকবার পড়লে কাজে দেবে।</p><button class="btn ghost" data-open="t${worst}">পাঠটা খুলুন</button></div>`:''}
+  ${sess.wrong.length?`<div class="sec"><h3>যেগুলো ভুল হয়েছে (${bnd(sess.wrong.length)}টি)</h3><ul class="ex">${sess.wrong.map(q=>q.type==='vf'?`<li><div class="en">${q.V.v} → ${VFL[q.k]}: <b>${q.ans}</b></div></li>`:`<li><div class="bn">${esc(q.it.bn)}</div><div class="en">${q.it.enHtml}</div><div class="sub">${tname(q.t)}</div></li>`).join('')}</ul></div>`:''}
+  <div class="row"><button class="btn" data-go>আবার অনুশীলন</button><button class="btn ghost" data-quit>অন্যভাবে অনুশীলন</button></div>
+ </div>`;
+}
+function renderPractice(){
+ if(!sess)return renderSetup();
+ if(sess.done)return renderResult();
+ const N=sess.qs.length,q=sess.qs[sess.i],a=sess.answered,it=q.it;
+ let body='';
+ if(q.type==='idbn')body=`<p class="prompt">${it.bnHtml}</p><p class="sub">মোটা করা শব্দটা ক্রিয়া। ওটা দেখে বলুন।</p>${idOpts(q,a)}`;
+ else if(q.type==='iden')body=`<p class="prompt" lang="en">${a?it.enHtml:esc(it.en)}</p>${a?`<p class="bnline">${esc(it.bn)}</p>`:''}${idOpts(q,a)}`;
+ else if(q.type==='mcq')body=`<p class="bnline">${it.bnHtml}</p><p class="blankline">${a?it.enHtml:blanked(it,it.sw,it.vp.length)}</p>${strOpts(q,a)}`;
+ else if(q.type==='fill')body=`<p class="bnline">${it.bnHtml}</p><p class="blankline">${a?it.enHtml:blanked(it,it.sw,it.vp.length)} <span class="sub">(${it.V.v})</span></p>
+  ${a?'':`<input class="fill" id="fill-answer" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="যেমন: is eating" aria-label="উত্তর লিখুন"><button class="btn" data-check>উত্তর মিলান</button>`}`;
+ else if(q.type==='aux')body=`<p class="bnline">${it.bnHtml}</p><p class="blankline">${a?it.enHtml:blanked(it,q.ai,1)}</p>${strOpts(q,a,true)}`;
+ else if(q.type==='arr')body=`<p class="prompt">${esc(it.bn)}</p>
+  <div class="built" aria-label="আপনার বাক্য">${q.built.map((w,k)=>`<button class="tile" data-un="${k}" ${a?'disabled':''}>${esc(w.x)}</button>`).join('')||'<span class="sub">নিচের শব্দগুলোতে ঠিক ক্রমে চাপ দিন</span>'}</div>
+  ${a?'':`<div class="tray">${q.tray.map((w,k)=>`<button class="tile" data-add="${k}">${esc(w.x)}</button>`).join('')}</div>
+  <button class="btn" data-check ${q.tray.length?'disabled':''}>উত্তর মিলান</button>`}`;
+ else if(q.type==='vf')body=`<p class="prompt"><b>${q.V.v}</b> (${esc(q.V.bn)})-এর ${VFL[q.k]} কোনটি?</p>${strOpts(q,a,true)}`;
+ const fb=a?`<div class="fb ${q.ok?'ok':'no'}" role="status"><strong>${q.ok?'ঠিক হয়েছে':'ঠিক হয়নি'}</strong>
+  ${q.type!=='vf'&&q.type!=='idbn'&&q.type!=='iden'?`<div class="en">ঠিক উত্তর: ${it.enHtml}</div>`:''}
+  ${q.type==='idbn'?`<div class="en">${it.enHtml}</div>`:''}
+  <div class="why">${why(q)}</div></div>
+  <button class="btn" data-next id="next-btn">${sess.i===N-1?'ফলাফল দেখুন':'পরের প্রশ্ন'}</button>`:'';
+ view.innerHTML=`
+ <div class="stack tight"><div class="row between"><span class="sub">প্রশ্ন ${bnd(sess.i+1)} / ${bnd(N)} · ঠিক ${bnd(sess.right)}</span><button class="btn ghost small" data-quit>বন্ধ করুন</button></div>
+ <div class="meter"><div style="width:${100*(sess.i+(a?1:0))/N}%"></div></div></div>
+ <div class="sheet"><div class="qtype">${QH[q.type]}</div>${body}${fb}</div>`;
+ const inp=$('#fill-answer');if(inp)inp.focus();
+ const nb=$('#next-btn');if(nb)nb.focus({preventScroll:false});
+}
+
+/* ---------- progress ---------- */
+let askReset=false;
+function renderProgress(){
+ const tot=Object.values(store.ty).reduce((a,x)=>a+x[1],0)||store.t.reduce((a,x)=>a+x[1],0);
+ const cor=Object.values(store.ty).reduce((a,x)=>a+x[0],0)||store.t.reduce((a,x)=>a+x[0],0);
+ const lv=t=>{const[c,n]=store.t[t];if(n<5)return'';const p=c/n;return p>=.8?'lv-good':p>=.6?'lv-mid':'lv-bad'};
+ view.innerHTML=`
+ <div class="stats">
+  <div><div class="big">${bnN(tot)}</div><p class="sub">প্রশ্নের উত্তর</p></div>
+  <div><div class="big">${tot?bnd(Math.round(100*cor/tot))+'%':'–'}</div><p class="sub">ঠিক হয়েছে</p></div>
+  <div><div class="big">${bnd(store.days.length)}</div><p class="sub">দিন অনুশীলন</p></div>
+  <div><div class="big">${bnd(store.read.length)}/${bnd(CH.length)}</div><p class="sub">পাঠ পড়া</p></div>
+ </div>
+ <div class="sec"><h3>১২টি tense-এ কেমন হচ্ছে</h3>
+ <div class="scroll"><table class="heat"><thead><tr><th></th>${TIME.map((x,g)=>`<th>${TIME_BN[g]}</th>`).join('')}</tr></thead><tbody>
+ ${[0,1,2,3].map(a=>`<tr><th>${ASP_BN[a]}<br><small>${ASP[a]}</small></th>${[0,1,2].map(g=>{const t=g*4+a,[c,n]=store.t[t];return `<td class="${lv(t)}"><button data-practice="mix:t${t}" aria-label="${tname(t)} অনুশীলন">${n?bnd(Math.round(100*c/n))+'%':'–'}<small>${bnd(c)}/${bnd(n)}</small></button></td>`}).join('')}</tr>`).join('')}
+ </tbody></table></div>
+ <div class="legend"><span class="g">৮০% বা বেশি</span><span class="m">৬০–৭৯%</span><span class="b">৬০%-এর কম</span><span>৫টির কম প্রশ্ন</span></div>
+ <p class="sub">কোনো ঘরে চাপ দিলে সেই tense-এর অনুশীলন শুরু হবে।</p></div>
+ <div class="sec"><h3>প্রশ্নের ধরন অনুযায়ী</h3><div class="sheet" style="gap:0;padding-block:6px">
+ ${Object.keys(TYN).map(k=>{const[c,n]=store.ty[k]||[0,0],p=n?Math.round(100*c/n):0;return `<div class="prow"><span>${TYN[k]}</span><span class="num">${n?bnd(p)+'%':'–'} · ${bnd(c)}/${bnd(n)}</span><div class="meter"><div style="width:${p}%"></div></div></div>`}).join('')}
+ </div></div>
+ <p class="sub">অগ্রগতি এই ফোন বা কম্পিউটারের ব্রাউজারেই জমা থাকে। অন্য যন্ত্রে খুললে নতুন করে শুরু হবে।</p>
+ <div class="row"><button class="btn" data-practice="mix:weak">দুর্বলগুলো অনুশীলন করুন</button><button class="btn ghost" data-reset>${askReset?'নিশ্চিত? আবার চাপ দিন':'সব মুছে নতুন করে শুরু'}</button></div>`;
+}
+
+/* ---------- render + events ---------- */
+function render(){
+ document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===tab));
+ if(tab==='learn')lesson?renderLesson():renderIndex();
+ else if(tab==='practice')renderPractice();
+ else renderProgress();
+}
+function checkTyped(){
+ const q=sess.qs[sess.i];
+ if(q.type==='fill'){
+  const v=($('#fill-answer').value||'').trim().toLowerCase().replace(/[.?!,]/g,'').replace(/\s+/g,' ').replace(/\blearnt\b/,'learned');
+  if(!v)return;
+  grade(v===q.ans.toLowerCase());
+ }else grade(q.built.map(w=>w.x).join(' ')===q.words.join(' '));
+ render();
+}
+function init(){
+ view=$('#view');
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  const d=b.dataset;
+  if(!('reset' in d))askReset=false;
+  if(d.tab){tab=d.tab;if(tab==='learn')lesson=null;render();window.scrollTo(0,0)}
+  else if(d.open){tab='learn';lesson=d.open;sess=sess&&sess.done?null:sess;render();window.scrollTo(0,0)}
+  else if('index' in d){lesson=null;render();window.scrollTo(0,0)}
+  else if(d.practice){const[ty,sc]=d.practice.split(':');setup.type=ty;setup.scope=sc;startSession()}
+  else if(d.set){const[k,v]=d.set.split(':');setup[k]=k==='len'?+v:v;render()}
+  else if('go' in d)startSession();
+  else if('quit' in d){sess=null;render();window.scrollTo(0,0)}
+  else if(d.tid!==undefined){const q=sess.qs[sess.i];q.pick=+d.tid;grade(q.pick===q.t);render()}
+  else if(d.opt!==undefined){const q=sess.qs[sess.i];q.pick=d.opt;grade(q.pick===q.ans);render()}
+  else if(d.add!==undefined){const q=sess.qs[sess.i];q.built.push(q.tray.splice(+d.add,1)[0]);render()}
+  else if(d.un!==undefined){const q=sess.qs[sess.i];q.tray.push(q.built.splice(+d.un,1)[0]);render()}
+  else if('check' in d)checkTyped();
+  else if('next' in d){if(sess.i===sess.qs.length-1)sess.done=true;else{sess.i++;sess.answered=false}render();window.scrollTo(0,0)}
+  else if('reset' in d){if(askReset){store=fresh();save();askReset=false}else askReset=true;render()}
+ });
+ document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='fill-answer'){e.preventDefault();checkTyped()}});
+ render();
+}
+if(typeof document!=='undefined')init();
+</script>
+</body>
+</html>
