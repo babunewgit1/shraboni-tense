@@ -232,7 +232,25 @@ const B={
  'আস':{pr:['আসি','আসো','আসে','আসেন'],c:'আসছ',pf:'এসে',ps:'এল',fu:'আসব',inf:'আসতে'},
  'আঁক':{pr:['আঁকি','আঁকো','আঁকে','আঁকেন'],c:'আঁকছ',pf:'এঁকে',ps:'আঁকল',fu:'আঁকব',inf:'আঁকতে'},
  'শুন':{pr:['শুনি','শোনো','শোনে','শোনেন'],c:'শুনছ',pf:'শুনে',ps:'শুনল',fu:'শুনব',inf:'শুনতে'},
- 'কাট':{pr:['কাটি','কাটো','কাটে','কাটেন'],c:'কাটছ',pf:'কেটে',ps:'কাটল',fu:'কাটব',inf:'কাটতে'}
+ 'কাট':{pr:['কাটি','কাটো','কাটে','কাটেন'],c:'কাটছ',pf:'কেটে',ps:'কাটল',fu:'কাটব',inf:'কাটতে'},
+ 'খুল':{pr:['খুলি','খোলো','খোলে','খোলেন'],c:'খুলছ',pf:'খুলে',ps:'খুলল',fu:'খুলব',inf:'খুলতে'},
+ 'বস':{pr:['বসি','বসো','বসে','বসেন'],c:'বসছ',pf:'বসে',ps:'বসল',fu:'বসব',inf:'বসতে'},
+ 'নাচ':{pr:['নাচি','নাচো','নাচে','নাচেন'],c:'নাচছ',pf:'নেচে',ps:'নাচল',fu:'নাচব',inf:'নাচতে'},
+ 'হাস':{pr:['হাসি','হাসো','হাসে','হাসেন'],c:'হাসছ',pf:'হেসে',ps:'হাসল',fu:'হাসব',inf:'হাসতে'},
+ 'কাঁদ':{pr:['কাঁদি','কাঁদো','কাঁদে','কাঁদেন'],c:'কাঁদছ',pf:'কেঁদে',ps:'কাঁদল',fu:'কাঁদব',inf:'কাঁদতে'},
+ 'পাঠা':{pr:['পাঠাই','পাঠাও','পাঠায়','পাঠান'],c:'পাঠাচ্ছ',pf:'পাঠিয়ে',ps:'পাঠাল',fu:'পাঠাব',inf:'পাঠাতে'},
+ 'খুঁজ':{pr:['খুঁজি','খোঁজো','খোঁজে','খোঁজেন'],c:'খুঁজছ',pf:'খুঁজে',ps:'খুঁজল',fu:'খুঁজব',inf:'খুঁজতে'},
+ 'লাগা':{pr:['লাগাই','লাগাও','লাগায়','লাগান'],c:'লাগাচ্ছ',pf:'লাগিয়ে',ps:'লাগাল',fu:'লাগাব',inf:'লাগাতে'},
+ 'খাওয়া':{pr:['খাওয়াই','খাওয়াও','খাওয়ায়','খাওয়ান'],c:'খাওয়াচ্ছ',pf:'খাইয়ে',ps:'খাওয়াল',fu:'খাওয়াব',inf:'খাওয়াতে'},
+ 'দে':{pr:['দিই','দাও','দেয়','দেন'],c:'দিচ্ছ',pf:'দিয়ে',ps:'দিল',fu:'দেব',inf:'দিতে'},
+ 'নে':{pr:['নিই','নাও','নেয়','নেন'],c:'নিচ্ছ',pf:'নিয়ে',ps:'নিল',fu:'নেব',inf:'নিতে'},
+ 'আন':{pr:['আনি','আনো','আনে','আনেন'],c:'আনছ',pf:'এনে',ps:'আনল',fu:'আনব',inf:'আনতে'},
+ 'ওড়া':{pr:['ওড়াই','ওড়াও','ওড়ায়','ওড়ান'],c:'ওড়াচ্ছ',pf:'উড়িয়ে',ps:'ওড়াল',fu:'ওড়াব',inf:'ওড়াতে'},
+ 'ভাব':{pr:['ভাবি','ভাবো','ভাবে','ভাবেন'],c:'ভাবছ',pf:'ভেবে',ps:'ভাবল',fu:'ভাবব',inf:'ভাবতে'},
+ 'ধর':{pr:['ধরি','ধরো','ধরে','ধরেন'],c:'ধরছ',pf:'ধরে',ps:'ধরল',fu:'ধরব',inf:'ধরতে'},
+ 'উঠ':{pr:['উঠি','ওঠো','ওঠে','ওঠেন'],c:'উঠছ',pf:'উঠে',ps:'উঠল',fu:'উঠব',inf:'উঠতে'},
+ 'চড়':{pr:['চড়ি','চড়ো','চড়ে','চড়েন'],c:'চড়ছ',pf:'চড়ে',ps:'চড়ল',fu:'চড়ব',inf:'চড়তে'},
+ 'ভাঙ':{pr:['ভাঙি','ভাঙো','ভাঙে','ভাঙেন'],c:'ভাঙছ',pf:'ভেঙে',ps:'ভাঙল',fu:'ভাঙব',inf:'ভাঙতে'}
 };
 const BE={c:['ি','','ে','েন'],pf:['ছি','ছ','ছে','ছেন'],ps:['াম','ে','','েন'],pc:['িলাম','িলে','িল','িলেন'],pp:['ছিলাম','ছিলে','ছিল','ছিলেন'],fu:['','ে','ে','েন']};
 function bnV(k,t,p){const b=B[k];switch(t){
@@ -276,7 +294,42 @@ const VERBS=[
  ['work|worked|worked|working|works','কাজ করা','কর','কাজ ',[['অফিসে','at the office'],['বাগানে','in the garden']]],
  ['study|studied|studied|studying|studies','পড়াশোনা করা','কর','পড়াশোনা ',[['',''],['লাইব্রেরিতে','in the library']]],
  ['wait|waited|waited|waiting|waits','অপেক্ষা করা','কর','অপেক্ষা ',[['বাসের জন্য','for the bus']]],
- ['sew|sewed|sewn|sewing|sews','সেলাই করা','কর','সেলাই ',[['জামা','a dress']]]
+ ['sew|sewed|sewn|sewing|sews','সেলাই করা','কর','সেলাই ',[['জামা','a dress']]],
+ ['open|opened|opened|opening|opens','খোলা','খুল','',[['দরজা','the door'],['জানালা','the window']]],
+ ['close|closed|closed|closing|closes','বন্ধ করা','কর','বন্ধ ',[['দরজা','the door'],['দোকান','the shop']]],
+ ['sit|sat|sat|sitting|sits','বসা','বস','',[['চেয়ারে','on the chair'],['বারান্দায়','on the veranda']]],
+ ['swim|swam|swum|swimming|swims','সাঁতার কাটা','কাট','সাঁতার ',[['পুকুরে','in the pond'],['নদীতে','in the river']]],
+ ['dance|danced|danced|dancing|dances','নাচা','নাচ','',[['মঞ্চে','on the stage'],['','']]],
+ ['laugh|laughed|laughed|laughing|laughs','হাসা','হাস','',[['','']]],
+ ['cry|cried|cried|crying|cries','কাঁদা','কাঁদ','',[['','']]],
+ ['send|sent|sent|sending|sends','পাঠানো','পাঠা','',[['চিঠি','a letter'],['টাকা','money'],['মেসেজ','a message']]],
+ ['look|looked|looked|looking|looks','খোঁজা','খুঁজ','',[['চাবি','for the key'],['বইটি','for the book']]],
+ ['call|called|called|calling|calls','ফোন করা','কর','ফোন ',[['বন্ধুকে','a friend'],['ডাক্তারকে','the doctor']]],
+ ['plant|planted|planted|planting|plants','লাগানো','লাগা','',[['গাছ','trees'],['ফুলের চারা','flowers']]],
+ ['feed|fed|fed|feeding|feeds','খাওয়ানো','খাওয়া','',[['বাচ্চাকে','the baby'],['বিড়ালকে','the cat']]],
+ ['iron|ironed|ironed|ironing|irons','ইস্ত্রি করা','কর','ইস্ত্রি ',[['জামা','the shirt'],['কাপড়','clothes']]],
+ ['sweep|swept|swept|sweeping|sweeps','ঝাড়ু দেওয়া','দে','ঝাড়ু ',[['ঘর','the floor'],['উঠান','the yard']]],
+ ['give|gave|given|giving|gives','দেওয়া','দে','',[['উপহার','a gift'],['টাকা','money']]],
+ ['tell|told|told|telling|tells','বলা','বল','',[['গল্প','a story'],['সত্য কথা','the truth']]],
+ ['speak|spoke|spoken|speaking|speaks','কথা বলা','বল','কথা ',[['ইংরেজিতে','English']]],
+ ['take|took|taken|taking|takes','নেওয়া','নে','',[['ওষুধ','medicine'],['বিশ্রাম','rest']]],
+ ['bring|brought|brought|bringing|brings','আনা','আন','',[['পানি','water'],['বাজার','groceries']]],
+ ['fly|flew|flown|flying|flies','ওড়ানো','ওড়া','',[['ঘুড়ি','a kite']]],
+ ['build|built|built|building|builds','তৈরি করা','কর','তৈরি ',[['বাড়ি','a house']]],
+ ['pray|prayed|prayed|praying|prays','নামাজ পড়া','পড়','নামাজ ',[['',''],['মসজিদে','at the mosque']]],
+ ['think|thought|thought|thinking|thinks','ভাবা','ভাব','',[['পরীক্ষা নিয়ে','about the exam'],['ভবিষ্যৎ নিয়ে','about the future']]],
+ ['catch|caught|caught|catching|catches','ধরা','ধর','',[['মাছ','fish'],['বল','the ball']]],
+ ['climb|climbed|climbed|climbing|climbs','ওঠা','উঠ','',[['গাছে','the tree'],['পাহাড়ে','the hill']]],
+ ['ride|rode|ridden|riding|rides','চড়া','চড়','',[['সাইকেলে','a bicycle'],['ঘোড়ায়','a horse']]],
+ ['break|broke|broken|breaking|breaks','ভাঙা','ভাঙ','',[['ডিম','eggs'],['গ্লাস','a glass']],1],
+ ['sell|sold|sold|selling|sells','বিক্রি করা','কর','বিক্রি ',[['ফল','fruit'],['সবজি','vegetables']]],
+ ['grow|grew|grown|growing|grows','চাষ করা','কর','চাষ ',[['ধান','rice'],['আলু','potatoes']]],
+ ['paint|painted|painted|painting|paints','রং করা','কর','রং ',[['দেয়াল','the wall'],['দরজা','the door']]],
+ ['repair|repaired|repaired|repairing|repairs','মেরামত করা','কর','মেরামত ',[['সাইকেল','the bicycle'],['ফ্যান','the fan']]],
+ ['use|used|used|using|uses','ব্যবহার করা','কর','ব্যবহার ',[['ফোন','the phone'],['কম্পিউটার','the computer']]],
+ ['practise|practised|practised|practising|practises','অনুশীলন করা','কর','অনুশীলন ',[['ইংরেজি','English'],['গান','singing']]],
+ ['answer|answered|answered|answering|answers','উত্তর দেওয়া','দে','উত্তর ',[['প্রশ্নের','the question']]],
+ ['visit|visited|visited|visiting|visits','বেড়াতে যাওয়া','যা','বেড়াতে ',[['নানাবাড়িতে','our grandparents'],['কক্সবাজারে','Cox’s Bazar']]]
 ].map(r=>{const[v,v2,v3,ing,s]=r[0].split('|');return{v,v2,v3,ing,s,bn:r[1],b:r[2],pre:r[3],o:r[4],nd:!!r[5]}});
 
 /* ---------- subjects: ec = English agreement (I / s3 / pl), p = Bangla person (0 আমি,1 তুমি,2 সে,3 আপনি) ---------- */
@@ -284,25 +337,27 @@ const S=[
  {bn:'আমি',en:'I',ec:'I',p:0},{bn:'আমরা',en:'We',ec:'pl',p:0},{bn:'তুমি',en:'You',ec:'pl',p:1},{bn:'আপনি',en:'You',ec:'pl',p:3},
  {bn:'সে',en:'He',ec:'s3',p:2},{bn:'সে',en:'She',ec:'s3',p:2},{bn:'তারা',en:'They',ec:'pl',p:2},{bn:'রিনা',en:'Rina',ec:'s3',p:2},
  {bn:'রহিম',en:'Rahim',ec:'s3',p:2},{bn:'শিশুরা',en:'The children',ec:'pl',p:2},{bn:'আমার মা',en:'My mother',ec:'s3',p:3},
- {bn:'আমার বাবা',en:'My father',ec:'s3',p:3},{bn:'আমার বোন',en:'My sister',ec:'s3',p:2}
+ {bn:'আমার বাবা',en:'My father',ec:'s3',p:3},{bn:'আমার বোন',en:'My sister',ec:'s3',p:2},
+ {bn:'তোমরা',en:'You',ec:'pl',p:1},{bn:'আমার ভাই',en:'My brother',ec:'s3',p:2},{bn:'ছাত্ররা',en:'The students',ec:'pl',p:2},
+ {bn:'আমাদের শিক্ষক',en:'Our teacher',ec:'s3',p:3},{bn:'আমার বন্ধুরা',en:'My friends',ec:'pl',p:2},{bn:'নাদিয়া',en:'Nadia',ec:'s3',p:2}
 ];
-const KEEPCAP=['I','Rina','Rahim'];
+const KEEPCAP=['I','Rina','Rahim','Nadia'];
 const SUB=en=>S.find(x=>x.en===en);
 
 /* ---------- time words per tense ---------- */
 const MK=[
- [{bn:'প্রতিদিন',en:'every day'},{bn:'রোজ সকালে',en:'every morning'},{bn:'প্রতি সন্ধ্যায়',en:'every evening'}],
- [{bn:'এখন',en:'now'},{bn:'এই মুহূর্তে',en:'at the moment'}],
- [{bn:'এইমাত্র',en:'just',pos:'mid'},{bn:'ইতিমধ্যে',en:'already',pos:'mid'},{bn:'',en:''}],
- [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'},{bn:'তিন দিন ধরে',en:'for three days'}],
- [{bn:'গতকাল',en:'yesterday'},{bn:'গত রাতে',en:'last night'},{bn:'গত সপ্তাহে',en:'last week'}],
- [{bn:'তখন',en:'at that time'},{bn:'গতকাল এই সময়ে',en:'at this time yesterday'}],
- [{bn:'মেহমান আসার আগে',en:'before the guests came',pos:'pre'},{bn:'সন্ধ্যার আগেই',en:'before evening'}],
- [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'}],
- [{bn:'আগামীকাল',en:'tomorrow'},{bn:'আগামী সপ্তাহে',en:'next week'}],
- [{bn:'আগামীকাল এই সময়ে',en:'at this time tomorrow'}],
- [{bn:'আগামীকালের মধ্যে',en:'by tomorrow'},{bn:'সন্ধ্যার মধ্যে',en:'by evening'}],
- [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'এক বছর ধরে',en:'for a year'}]
+ [{bn:'প্রতিদিন',en:'every day'},{bn:'রোজ সকালে',en:'every morning'},{bn:'প্রতি সন্ধ্যায়',en:'every evening'},{bn:'প্রতি রাতে',en:'every night'},{bn:'প্রতি শুক্রবার',en:'every Friday'},{bn:'সপ্তাহে একবার',en:'once a week'}],
+ [{bn:'এখন',en:'now'},{bn:'এই মুহূর্তে',en:'at the moment'},{bn:'এখন',en:'right now'},{bn:'আজকাল',en:'these days'}],
+ [{bn:'এইমাত্র',en:'just',pos:'mid'},{bn:'ইতিমধ্যে',en:'already',pos:'mid'},{bn:'',en:''},{bn:'আজ',en:'today'},{bn:'এই সপ্তাহে',en:'this week'}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'},{bn:'তিন দিন ধরে',en:'for three days'},{bn:'এক ঘণ্টা ধরে',en:'for an hour'},{bn:'বিকেল থেকে',en:'since afternoon'},{bn:'গত বছর থেকে',en:'since last year'}],
+ [{bn:'গতকাল',en:'yesterday'},{bn:'গত রাতে',en:'last night'},{bn:'গত সপ্তাহে',en:'last week'},{bn:'দুই দিন আগে',en:'two days ago'},{bn:'গত বছর',en:'last year'},{bn:'গত শুক্রবার',en:'last Friday'}],
+ [{bn:'তখন',en:'at that time'},{bn:'গতকাল এই সময়ে',en:'at this time yesterday'},{bn:'গত রাত দশটায়',en:'at ten last night'}],
+ [{bn:'মেহমান আসার আগে',en:'before the guests came',pos:'pre'},{bn:'সন্ধ্যার আগেই',en:'before evening'},{bn:'বৃষ্টি শুরু হওয়ার আগে',en:'before the rain started',pos:'pre'},{bn:'ট্রেন ছাড়ার আগে',en:'before the train left',pos:'pre'}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'সকাল থেকে',en:'since morning'},{bn:'এক ঘণ্টা ধরে',en:'for an hour'},{bn:'বিকেল থেকে',en:'since afternoon'}],
+ [{bn:'আগামীকাল',en:'tomorrow'},{bn:'আগামী সপ্তাহে',en:'next week'},{bn:'আগামী মাসে',en:'next month'},{bn:'পরশু',en:'the day after tomorrow'},{bn:'আগামী শুক্রবার',en:'next Friday'}],
+ [{bn:'আগামীকাল এই সময়ে',en:'at this time tomorrow'},{bn:'আগামীকাল সকাল আটটায়',en:'at eight tomorrow morning'},{bn:'আগামী সপ্তাহে এই সময়ে',en:'at this time next week'}],
+ [{bn:'আগামীকালের মধ্যে',en:'by tomorrow'},{bn:'সন্ধ্যার মধ্যে',en:'by evening'},{bn:'আগামী মাসের মধ্যে',en:'by next month'},{bn:'রাত দশটার মধ্যে',en:'by ten tonight'}],
+ [{bn:'দুই ঘণ্টা ধরে',en:'for two hours'},{bn:'এক বছর ধরে',en:'for a year'},{bn:'তিন ঘণ্টা ধরে',en:'for three hours'},{bn:'দুই বছর ধরে',en:'for two years'}]
 ];
 
 /* ---------- lesson text for each tense ---------- */
@@ -628,9 +683,27 @@ function renderLesson(){
 }
 
 /* ---------- practice ---------- */
-const TYPESETS={mix:{idbn:3,iden:2,mcq:2,fill:1,aux:2,arr:2,vf:1},id:{idbn:2,iden:1},form:{mcq:1,fill:1},aux:{aux:1},arr:{arr:1},vf:{vf:1}};
-const TYN={idbn:'Tense চেনা (বাংলা বাক্য)',iden:'Tense চেনা (ইংরেজি বাক্য)',mcq:'ঠিক রূপ বাছাই',fill:'শূন্যস্থান পূরণ',aux:'সাহায্যকারী verb',arr:'বাক্য সাজানো',vf:'V1 V2 V3'};
-const QH={idbn:'এই বাংলা বাক্যটি কোন tense?',iden:'এই ইংরেজি বাক্যটি কোন tense?',mcq:'ঠিক রূপটি বাছুন',fill:'শূন্যস্থানে verb-এর ঠিক রূপ লিখুন',aux:'ঠিক সাহায্যকারী verb বাছুন',arr:'শব্দ সাজিয়ে ইংরেজি বাক্য বানান',vf:'verb-এর ঠিক রূপ বাছুন'};
+const TYPESETS={mix:{idbn:3,iden:2,mcq:2,fill:1,aux:2,arr:2,vf:1,neg:1,qf:1},id:{idbn:2,iden:1},form:{mcq:1,fill:1},aux:{aux:1},arr:{arr:1},vf:{vf:1},negq:{neg:1,qf:1}};
+const TYN={idbn:'Tense চেনা (বাংলা বাক্য)',iden:'Tense চেনা (ইংরেজি বাক্য)',mcq:'ঠিক রূপ বাছাই',fill:'শূন্যস্থান পূরণ',aux:'সাহায্যকারী verb',arr:'বাক্য সাজানো',vf:'V1 V2 V3',neg:'না-বোধক বাক্য',qf:'প্রশ্নবোধক বাক্য'};
+const QH={idbn:'এই বাংলা বাক্যটি কোন tense?',iden:'এই ইংরেজি বাক্যটি কোন tense?',mcq:'ঠিক রূপটি বাছুন',fill:'শূন্যস্থানে verb-এর ঠিক রূপ লিখুন',aux:'ঠিক সাহায্যকারী verb বাছুন',arr:'শব্দ সাজিয়ে ইংরেজি বাক্য বানান',vf:'verb-এর ঠিক রূপ বাছুন',neg:'না-বোধক বাক্য বানান',qf:'প্রশ্নবোধক বাক্য বানান'};
+function negQ(it){
+ const t=it.t,V=it.V,s3=it.s.ec==='s3',vp=it.vp,sub=it.words.slice(0,it.sw),rest=it.words.slice(it.sw+vp.length);
+ const J=a=>[...sub,...a,...rest].join(' ')+'.';
+ let ok,w;
+ if(t===0){ok=[s3?'does':'do','not',V.v];w=[['not',vp[0]],[s3?'does':'do','not',V.s],[s3?'do':'does','not',V.v],[vp[0],'not']]}
+ else if(t===4){ok=['did','not',V.v];w=[['did','not',V.v2],['not',V.v2],[V.v2,'not'],[s3?'does':'do','not',V.v]]}
+ else{ok=vp.slice();ok.splice(1,0,'not');const last=vp[vp.length-1],bad=ok.slice();bad[bad.length-1]=last===V.ing?V.v:(last===V.v3&&V.v2!==V.v3)?V.v2:V.ing;w=[['not',...vp],[...vp,'not'],bad];if(vp.length>2)w.push([vp[0],...vp.slice(1,-1),'not',vp[vp.length-1]])}
+ const ans=J(ok);return{ans,opts:shuffle([ans,...shuffle(uniq(w.map(J))).filter(x=>x!==ans).slice(0,3)])};
+}
+function qfQ(it){
+ const t=it.t,V=it.V,s=it.s,s3=s.ec==='s3',vp=it.vp,sl=lowerSubj(s.en).split(' '),rest=it.words.slice(it.sw+vp.length);
+ const J=a=>[...a,...rest].join(' ')+'?';
+ const qit=make(t,s,V,it.o,it.m,true),ans=qit.en,w=[it.words.join(' ')+'?'];
+ if(t===0)w.push(J([s3?'Do':'Does',...sl,V.v]),J([s3?'Does':'Do',...sl,V.s]));
+ else if(t===4)w.push(J(['Did',...sl,V.v2]),J([s3?'Does':'Do',...sl,V.v]));
+ else{const ALT={am:'Is',is:'Are',are:'Is',was:'Were',were:'Was',has:'Have',have:'Has',had:'Has',will:'Is'};w.push(J([ALT[vp[0]],...sl,...vp.slice(1)]));const r=vp.slice(1),last=r[r.length-1];r[r.length-1]=last===V.ing?V.v:(last===V.v3&&V.v2!==V.v3)?V.v2:V.ing;w.push(J([cap(vp[0]),...sl,...r]))}
+ return{ans,qit,opts:shuffle([ans,...shuffle(uniq(w)).filter(x=>x!==ans).slice(0,3)])};
+}
 const AUXO=[['Do','Does','Did','Is'],['am','is','are','was'],['has','have','had','is'],['has','have','had','is'],['Did','Do','Does','Was'],['was','were','is','are'],['had','has','have','was'],['had','has','have','was'],['will','is','has','was'],['will','is','has','was'],['will','is','has','was'],['will','is','has','was']];
 const VFL={v2:'V2 (অতীত রূপ)',v3:'V3 (তৃতীয় রূপ)',ing:'ing রূপ',s:'s/es রূপ'};
 function scopeList(sc){
@@ -648,8 +721,10 @@ function buildQ(type,t,list){
   return {type,t:-1,V,k,ans,opts:shuffle([ans,...shuffle(pool).slice(0,3)]),key:'vf|'+V.v+k};
  }
  const isQ=type==='arr'?Math.random()<.25:(type==='aux'&&(t===0||t===4));
- const it=genItem(t,{noMid:['mcq','fill','aux'].includes(type),q:isQ});
+ const it=genItem(t,{noMid:['mcq','fill','aux','neg','qf'].includes(type),q:isQ});
  const q={type,t,it,key:type+'|'+it.en};
+ if(type==='neg')Object.assign(q,negQ(it));
+ if(type==='qf')Object.assign(q,qfQ(it));
  if(type==='idbn'||type==='iden')q.choices=list.length>1?list:[0,1,2,3].map(a=>(t>>2)*4+a);
  if(type==='mcq'){q.ans=it.vp.join(' ');const c=uniq(shuffle(confusers(t)).map(x=>enVP(x,it.s,it.V).join(' '))).filter(x=>x!==q.ans);q.opts=shuffle([q.ans,...c.slice(0,3)])}
  if(type==='fill')q.ans=it.vp.join(' ');
@@ -678,6 +753,10 @@ function agree(t,s,V,isQ){
 function why(q){
  if(q.type==='vf'){const V=q.V;return `<div><b>${V.v}</b> (${esc(V.bn)}): ${V.v} · ${V.v2} · ${V.v3} · ${V.ing} · ${V.s}</div><div class="sub">ক্রম: V1 · V2 · V3 · ing · s/es</div>`}
  const it=q.it,t=q.t;
+ if(q.type==='neg'){const s3=it.s.ec==='s3';return `<div><b>${tname(t)}</b> (${tbn(t)})</div><div>না-বোধক গঠন: ${esc(TD[t].neg)}</div>
+  <div>${t===0?(s3?esc(it.s.en)+' একজন, তাই does not। does-এর পরে verb-এ s বসে না।':'do not, তারপর verb-এর V1।'):t===4?'did not, তারপর verb-এর V1 (V2 নয়)।':'প্রথম সাহায্যকারী verb ('+esc(it.vp[0])+')-এর ঠিক পরে not বসে।'}</div>`}
+ if(q.type==='qf')return `<div><b>${tname(t)}</b> (${tbn(t)})</div><div>প্রশ্নের গঠন: ${esc(TD[t].q)}</div>
+  <div>${t===0||t===4?agree(t,it.s,it.V,true):'প্রথম সাহায্যকারী verb ('+esc(it.vp[0])+') বাক্যের শুরুতে চলে যায়।'}</div>`;
  return `<div><b>${tname(t)}</b> (${tbn(t)})</div>
  <div>বাংলা ক্রিয়া <b>${esc(it.bv)}</b>: ${esc(TD[t].clue)}</div>
  <div>গঠন: ${esc(TD[t].f.join(' + '))}</div>
@@ -718,7 +797,8 @@ function renderSetup(){
   <button data-set="type:form" aria-pressed="${P('type','form')}">Verb-এর ঠিক রূপ<small>শূন্যস্থান পূরণ</small></button>
   <button data-set="type:aux" aria-pressed="${P('type','aux')}">সাহায্যকারী verb<small>am/is/are, has/have, do/does</small></button>
   <button data-set="type:arr" aria-pressed="${P('type','arr')}">বাক্য সাজানো<small>বাংলা থেকে ইংরেজি</small></button>
-  <button class="wide" data-set="type:vf" aria-pressed="${P('type','vf')}">V1 V2 V3<small>verb-এর রূপ মুখস্থ: eat, ate, eaten</small></button>
+  <button data-set="type:negq" aria-pressed="${P('type','negq')}">না-বোধক ও প্রশ্ন<small>not বসানো, প্রশ্ন বানানো</small></button>
+  <button data-set="type:vf" aria-pressed="${P('type','vf')}">V1 V2 V3<small>eat, ate, eaten</small></button>
  </div></div>
  <div class="sec"><h3>কোন tense থেকে</h3><div class="pick">
   <button data-set="scope:present" aria-pressed="${P('scope','present')}">Present-এর ৪টি<small>নতুনদের জন্য প্রথমে</small></button>
@@ -760,9 +840,12 @@ function renderPractice(){
   <div class="built" aria-label="আপনার বাক্য">${q.built.map((w,k)=>`<button class="tile" data-un="${k}" ${a?'disabled':''}>${esc(w.x)}</button>`).join('')||'<span class="sub">নিচের শব্দগুলোতে ঠিক ক্রমে চাপ দিন</span>'}</div>
   ${a?'':`<div class="tray">${q.tray.map((w,k)=>`<button class="tile" data-add="${k}">${esc(w.x)}</button>`).join('')}</div>
   <button class="btn" data-check ${q.tray.length?'disabled':''}>উত্তর মিলান</button>`}`;
+ else if(q.type==='neg')body=`<p class="prompt" lang="en">${esc(it.en)}</p><p class="bnline">${esc(it.bn)}</p><p class="sub">এই বাক্যটিকে না-বোধক (not দিয়ে) করলে কোনটি ঠিক?</p>${strOpts(q,a)}`;
+ else if(q.type==='qf')body=`<p class="prompt" lang="en">${esc(it.en)}</p><p class="bnline">প্রশ্ন: ${esc(q.qit.bn)}</p><p class="sub">এই বাক্যটিকে প্রশ্ন বানালে কোনটি ঠিক?</p>${strOpts(q,a)}`;
  else if(q.type==='vf')body=`<p class="prompt"><b>${q.V.v}</b> (${esc(q.V.bn)})-এর ${VFL[q.k]} কোনটি?</p>${strOpts(q,a,true)}`;
  const fb=a?`<div class="fb ${q.ok?'ok':'no'}" role="status"><strong>${q.ok?'ঠিক হয়েছে':'ঠিক হয়নি'}</strong>
-  ${q.type!=='vf'&&q.type!=='idbn'&&q.type!=='iden'?`<div class="en">ঠিক উত্তর: ${it.enHtml}</div>`:''}
+  ${q.type==='neg'||q.type==='qf'?`<div class="en">ঠিক উত্তর: <b>${esc(q.ans)}</b></div>`:''}
+  ${!['vf','idbn','iden','neg','qf'].includes(q.type)?`<div class="en">ঠিক উত্তর: ${it.enHtml}</div>`:''}
   ${q.type==='idbn'?`<div class="en">${it.enHtml}</div>`:''}
   <div class="why">${why(q)}</div></div>
   <button class="btn" data-next id="next-btn">${sess.i===N-1?'ফলাফল দেখুন':'পরের প্রশ্ন'}</button>`:'';
