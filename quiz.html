@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tense পরীক্ষা: ১২০টি প্রশ্ন</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@600;700&family=Hind+Siliguri:wght@400;500;600&display=swap">
+<style>
+/* Layout: an exam paper. One column of numbered question cards, a sticky score strip on top. */
+:root{
+  --paper:#f2f5fb; --surface:#ffffff; --ink:#16233f; --muted:#56647f; --line:#d3dbea;
+  --accent:#1f4fd1; --accent-soft:#e4ebfd; --on-accent:#ffffff; --margin:#d6455a;
+  --good:#17805a; --good-soft:#dff4ea; --bad:#c23434; --bad-soft:#fde6e6;
+  --display:"Baloo Da 2","Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+  --body:"Hind Siliguri","Noto Sans Bengali",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0f1524; --surface:#182036; --ink:#e8edf8; --muted:#9ba8c4; --line:#2c3757;
+  --accent:#86a8ff; --accent-soft:#222f55; --on-accent:#0f1524; --margin:#ff7a8c;
+  --good:#55d3a0; --good-soft:#143a2d; --bad:#ff8a8a; --bad-soft:#44201f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1524; --surface:#182036; --ink:#e8edf8; --muted:#9ba8c4; --line:#2c3757;
+  --accent:#86a8ff; --accent-soft:#222f55; --on-accent:#0f1524; --margin:#ff7a8c;
+  --good:#55d3a0; --good-soft:#143a2d; --bad:#ff8a8a; --bad-soft:#44201f; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+.page{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:20px 60px;display:flex;flex-direction:column;gap:18px}
+h1,h2{font-family:var(--display);line-height:1.25;margin:0;text-wrap:balance}
+h1{font-size:1.9rem}
+h2{font-size:1.4rem}
+p{margin:0}
+.sub{color:var(--muted)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.bar{position:sticky;top:0;z-index:5;background:var(--paper);padding-block:10px;border-bottom:2px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.bar .row{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;justify-content:space-between}
+.bar b{font-variant-numeric:tabular-nums}
+.meter{height:8px;background:var(--line);border-radius:4px;overflow:hidden;display:flex}
+.meter .g{background:var(--good)}
+.meter .r{background:var(--bad)}
+.jump{display:flex;gap:8px;flex-wrap:wrap}
+.jump a{color:var(--accent);font-weight:600;text-decoration:none;font-size:.95rem}
+
+.intro{background:var(--accent-soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.part{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card.ok{border-color:var(--good)}
+.card.no{border-color:var(--bad)}
+.qn{font-size:.85rem;font-weight:600;color:var(--margin);display:flex;gap:8px;align-items:center}
+.qn .tag{margin-left:auto;font-weight:600;border-radius:999px;padding:0 10px}
+.card.ok .tag{background:var(--good-soft);color:var(--good)}
+.card.no .tag{background:var(--bad-soft);color:var(--bad)}
+.sent{font-size:1.2rem;font-family:var(--display);line-height:1.45}
+.alt{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.col{display:flex;flex-direction:column;gap:6px;min-width:0}
+.col .h{text-align:center;font-weight:600;font-size:.9rem;line-height:1.25}
+.col .h small{display:block;color:var(--muted);font-weight:400;font-size:.78rem}
+.col button{background:var(--surface);border:1.5px solid var(--line);border-radius:9px;padding:9px 6px;font-size:.88rem;font-weight:500;line-height:1.3}
+.col button:disabled{cursor:default}
+.col button.right{border-color:var(--good);background:var(--good-soft)}
+.col button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.fillline{font-size:1.1rem;font-weight:500;line-height:2.1}
+.fillline input{font:inherit;color:var(--ink);background:var(--surface);border:0;border-bottom:2px solid var(--accent);padding:0 4px;width:11em;max-width:100%}
+.fillline input:disabled{opacity:1}
+.fillline .hint{color:var(--muted);font-size:.95rem}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.sugg span{background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 12px;font-size:.92rem;font-weight:500}
+.sugg em{font-style:normal;color:var(--muted);font-size:.88rem}
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:10px;padding:10px 18px;font-weight:600;align-self:flex-start}
+.btn.ghost{background:none;color:var(--accent);border:1.5px solid var(--accent)}
+.fb{border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:4px;font-size:.97rem}
+.fb.ok{background:var(--good-soft)}
+.fb.no{background:var(--bad-soft)}
+.fb strong{font-family:var(--display);font-size:1.05rem}
+.fb.ok strong{color:var(--good)}
+.fb.no strong{color:var(--bad)}
+.fb b{color:var(--accent)}
+.result{background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.big{font-family:var(--display);font-size:2.4rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.byt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 16px;font-size:.93rem}
+.byt span:nth-child(even){text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.byt .weak{color:var(--bad);font-weight:600}
+@media (max-width:560px){
+  body{font-size:16px}
+  h1{font-size:1.5rem}
+  .card{padding:14px}
+  .sent{font-size:1.1rem}
+  .col button{font-size:.82rem;padding:9px 4px}
+  .btn{align-self:stretch;text-align:center;padding:13px}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .big{font-size:1.8rem}
+  .fillline input{width:100%;display:block;margin-block:4px;font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <header style="display:flex;flex-direction:column;gap:6px">
+    <h1>Tense পরীক্ষা</h1>
+    <p class="sub">শ্রাবণীর জন্য ১২০টি প্রশ্ন। উত্তর দিলেই সাথে সাথে দেখাবে ঠিক হলো কিনা।</p>
+  </header>
+  <div class="bar" id="bar"></div>
+  <div class="intro">
+    <p><b>অংশ ১ (৮০টি):</b> বাক্যটি পড়ে ঠিক tense-এ চাপ দিন। কিছু বাক্য বাংলায়, কিছু ইংরেজিতে।</p>
+    <p><b>অংশ ২ (৪০টি):</b> বাংলা বাক্যের ইংরেজি অনুবাদের ফাঁকা জায়গায় verb-এর ঠিক রূপ লিখুন, তারপর "মিলান" চাপুন। নীল শব্দগুলো সাহায্যের জন্য।</p>
+    <p class="sub">মাঝপথে বন্ধ করলেও উত্তরগুলো এই ব্রাউজারে জমা থাকে।</p>
+  </div>
+  <section class="part" id="part1"><h2>অংশ ১: কোনটি কোন tense?</h2></section>
+  <div id="list1" style="display:flex;flex-direction:column;gap:14px"></div>
+  <section class="part" id="part2"><h2>অংশ ২: অনুবাদ (শূন্যস্থান পূরণ)</h2><p class="sub">ব্র্যাকেটের verb-টিকে ঠিক tense-এ লিখুন। দরকার হলে am/is/are, have/has, will ইত্যাদিও লিখতে হবে।</p></section>
+  <div id="list2" style="display:flex;flex-direction:column;gap:14px"></div>
+  <div id="result"></div>
+</div>
+
+<script>
+const ASP=['Indefinite','Continuous','Perfect','Perfect Continuous'];
+const ASP_BN=['সাধারণ','ঘটমান','পুরাঘটিত','পুরাঘটিত ঘটমান'];
+const TIME=['Present','Past','Future'],TIME_BN=['বর্তমান','অতীত','ভবিষ্যৎ'];
+const tname=t=>TIME[t>>2]+' '+ASP[t&3];
+const tbn=t=>ASP_BN[t&3]+' '+TIME_BN[t>>2];
+const CL=[
+ 'বাংলায় ক্রিয়ার শেষে ই / ও / এ / য় / ন। ইংরেজিতে V1, একজন হলে V1+s/es।',
+ 'বাংলায় ছি / ছে, কিন্তু ছ-এর আগে এ-কার নেই। ইংরেজিতে am / is / are + V1+ing।',
+ 'বাংলায় ছ-এর আগে এ-কার আছে (য়েছে, েছে)। ইংরেজিতে have / has + V3।',
+ 'ঘটমান বর্তমানের মতো, সাথে "ধরে" বা "থেকে"। ইংরেজিতে have / has been + V1+ing।',
+ 'বাংলায় লাম / লে / ল / লেন। ইংরেজিতে V2।',
+ 'বাংলায় ছিল, কিন্তু ছ-এর আগে এ-কার নেই। ইংরেজিতে was / were + V1+ing।',
+ 'বাংলায় য়েছিল / েছিল। ইংরেজিতে had + V3।',
+ 'বাংলায় ছিল (ঘটমান), সাথে "ধরে" বা "থেকে"। ইংরেজিতে had been + V1+ing।',
+ 'বাংলায় ব / বে / বেন। ইংরেজিতে will + V1।',
+ 'বাংলায় "তে থাকব / থাকবে"। ইংরেজিতে will be + V1+ing।',
+ 'বাংলায় "য়ে / এ থাকব / থাকবে"। ইংরেজিতে will have + V3।',
+ 'বাংলায় "তে থাকবে", সাথে "ধরে" বা "থেকে"। ইংরেজিতে will have been + V1+ing।'
+];
+
+/* Part 1: [tense, English, Bangla]. Alternating items are shown in Bangla or English. */
+const ID=[
+ [0,'My father reads the newspaper every morning.','আমার বাবা প্রতিদিন সকালে পত্রিকা পড়েন।'],
+ [0,'The sun rises in the east.','সূর্য পূর্ব দিকে ওঠে।'],
+ [0,'We go to the market on Fridays.','আমরা শুক্রবারে বাজারে যাই।'],
+ [0,'She drinks tea twice a day.','সে দিনে দুইবার চা খায়।'],
+ [0,'They play cricket in the afternoon.','তারা বিকেলে ক্রিকেট খেলে।'],
+ [0,'My mother cooks very well.','আমার মা খুব ভালো রান্না করেন।'],
+ [0,'I brush my teeth before bed.','আমি ঘুমানোর আগে দাঁত ব্রাশ করি।'],
+ [1,'The baby is sleeping now.','শিশুটি এখন ঘুমাচ্ছে।'],
+ [1,'Look! It is raining.','দেখো! বৃষ্টি হচ্ছে।'],
+ [1,'I am cooking rice at the moment.','আমি এই মুহূর্তে ভাত রান্না করছি।'],
+ [1,'They are watching a drama.','তারা একটি নাটক দেখছে।'],
+ [1,'My sister is talking on the phone.','আমার বোন ফোনে কথা বলছে।'],
+ [1,'We are learning English these days.','আমরা আজকাল ইংরেজি শিখছি।'],
+ [1,'Why are you crying?','তুমি কাঁদছ কেন?'],
+ [2,'I have finished my homework.','আমি আমার বাড়ির কাজ শেষ করেছি।'],
+ [2,'She has just washed the clothes.','সে এইমাত্র কাপড় ধুয়েছে।'],
+ [2,'We have already eaten lunch.','আমরা ইতিমধ্যে দুপুরের খাবার খেয়েছি।'],
+ [2,'Rahim has bought a new phone.','রহিম একটি নতুন ফোন কিনেছে।'],
+ [2,'Have you seen my key?','তুমি কি আমার চাবি দেখেছ?'],
+ [2,'They have not come yet.','তারা এখনো আসেনি।'],
+ [2,'My father has gone to the office.','আমার বাবা অফিসে গিয়েছেন।'],
+ [3,'I have been waiting for the bus for twenty minutes.','আমি বিশ মিনিট ধরে বাসের জন্য অপেক্ষা করছি।'],
+ [3,'It has been raining since morning.','সকাল থেকে বৃষ্টি হচ্ছে।'],
+ [3,'She has been teaching for five years.','সে পাঁচ বছর ধরে পড়াচ্ছে।'],
+ [3,'The children have been playing for two hours.','শিশুরা দুই ঘণ্টা ধরে খেলছে।'],
+ [3,'We have been living here since 2020.','আমরা ২০২০ সাল থেকে এখানে বাস করছি।'],
+ [3,'He has been working in the garden since afternoon.','সে বিকেল থেকে বাগানে কাজ করছে।'],
+ [4,'I went to Dhaka yesterday.','আমি গতকাল ঢাকা গেলাম।'],
+ [4,'She bought a red dress last week.','সে গত সপ্তাহে একটি লাল জামা কিনল।'],
+ [4,'We watched a movie last night.','আমরা গত রাতে একটি সিনেমা দেখলাম।'],
+ [4,'My brother passed the exam last year.','আমার ভাই গত বছর পরীক্ষায় পাস করল।'],
+ [4,'Did you eat breakfast this morning?','তুমি কি আজ সকালে নাস্তা খেলে?'],
+ [4,'Rina wrote a letter two days ago.','রিনা দুই দিন আগে একটি চিঠি লিখল।'],
+ [4,'The train left at six o’clock.','ট্রেনটি ছয়টায় ছাড়ল।'],
+ [5,'I was cooking when the guests came.','মেহমানরা যখন এলেন, আমি তখন রান্না করছিলাম।'],
+ [5,'They were playing football at that time.','তারা তখন ফুটবল খেলছিল।'],
+ [5,'She was sleeping at ten last night.','গত রাত দশটায় সে ঘুমাচ্ছিল।'],
+ [5,'We were watching TV when the light went out.','বিদ্যুৎ যখন চলে গেল, আমরা তখন টিভি দেখছিলাম।'],
+ [5,'My mother was making tea at this time yesterday.','গতকাল এই সময়ে আমার মা চা বানাচ্ছিলেন।'],
+ [5,'What were you doing at that time?','তুমি তখন কী করছিলে?'],
+ [5,'The boys were swimming in the pond.','ছেলেরা পুকুরে সাঁতার কাটছিল।'],
+ [6,'The train had left before we reached the station.','আমরা স্টেশনে পৌঁছানোর আগে ট্রেন ছেড়ে দিয়েছিল।'],
+ [6,'I had eaten before the guests came.','মেহমান আসার আগে আমি খেয়েছিলাম।'],
+ [6,'She had finished the work before evening.','সন্ধ্যার আগেই সে কাজটি শেষ করেছিল।'],
+ [6,'The film had started before we arrived.','আমরা পৌঁছানোর আগে সিনেমাটি শুরু হয়েছিল।'],
+ [6,'They had gone home before the rain started.','বৃষ্টি শুরু হওয়ার আগে তারা বাড়ি চলে গিয়েছিল।'],
+ [6,'My father had paid the bill before I asked.','আমি জিজ্ঞেস করার আগেই বাবা বিল দিয়েছিলেন।'],
+ [6,'We had cleaned the house before the guests arrived.','মেহমানরা আসার আগে আমরা ঘর পরিষ্কার করেছিলাম।'],
+ [7,'I had been waiting for an hour when the bus came.','বাস যখন এলো, আমি তখন এক ঘণ্টা ধরে অপেক্ষা করছিলাম।'],
+ [7,'She had been crying since morning.','সে সকাল থেকে কাঁদছিল।'],
+ [7,'They had been working for ten hours.','তারা দশ ঘণ্টা ধরে কাজ করছিল।'],
+ [7,'It had been raining for three days.','তিন দিন ধরে বৃষ্টি হচ্ছিল।'],
+ [7,'We had been living in Khulna since 2018.','আমরা ২০১৮ সাল থেকে খুলনায় বাস করছিলাম।'],
+ [7,'He had been studying for two hours before dinner.','রাতের খাবারের আগে সে দুই ঘণ্টা ধরে পড়ছিল।'],
+ [8,'I will call you tomorrow.','আমি আগামীকাল তোমাকে ফোন করব।'],
+ [8,'We will go to Cox’s Bazar next month.','আমরা আগামী মাসে কক্সবাজার যাব।'],
+ [8,'She will cook biryani on Friday.','সে শুক্রবার বিরিয়ানি রান্না করবে।'],
+ [8,'It will rain today.','আজ বৃষ্টি হবে।'],
+ [8,'They will not come today.','তারা আজ আসবে না।'],
+ [8,'Will you help me?','তুমি কি আমাকে সাহায্য করবে?'],
+ [8,'My brother will buy a bicycle.','আমার ভাই একটি সাইকেল কিনবে।'],
+ [9,'I will be sleeping at ten tonight.','আজ রাত দশটায় আমি ঘুমাতে থাকব।'],
+ [9,'At this time tomorrow, we will be travelling to Sylhet.','আগামীকাল এই সময়ে আমরা সিলেট যেতে থাকব।'],
+ [9,'She will be cooking when you come.','তুমি যখন আসবে, সে তখন রান্না করতে থাকবে।'],
+ [9,'They will be playing at four o’clock.','চারটায় তারা খেলতে থাকবে।'],
+ [9,'My father will be working at the office tomorrow morning.','আগামীকাল সকালে আমার বাবা অফিসে কাজ করতে থাকবেন।'],
+ [9,'The children will be watching TV at eight.','আটটায় শিশুরা টিভি দেখতে থাকবে।'],
+ [10,'I will have finished the work by evening.','সন্ধ্যার মধ্যে আমি কাজটি শেষ করে থাকব।'],
+ [10,'She will have cooked the food by noon.','দুপুরের মধ্যে সে খাবার রান্না করে থাকবে।'],
+ [10,'They will have reached home by ten.','দশটার মধ্যে তারা বাড়ি পৌঁছে থাকবে।'],
+ [10,'We will have learned all the tenses by next month.','আগামী মাসের মধ্যে আমরা সব tense শিখে থাকব।'],
+ [10,'The guests will have left by midnight.','মাঝরাতের মধ্যে মেহমানরা চলে গিয়ে থাকবেন।'],
+ [10,'He will have read the book by tomorrow.','আগামীকালের মধ্যে সে বইটি পড়ে থাকবে।'],
+ [11,'By next year, I will have been teaching for ten years.','আগামী বছর আমি দশ বছর ধরে পড়াতে থাকব।'],
+ [11,'She will have been sleeping for two hours by then.','ততক্ষণে সে দুই ঘণ্টা ধরে ঘুমাতে থাকবে।'],
+ [11,'They will have been working for six hours.','তারা ছয় ঘণ্টা ধরে কাজ করতে থাকবে।'],
+ [11,'We will have been living here for five years next month.','আগামী মাসে আমরা পাঁচ বছর ধরে এখানে বাস করতে থাকব।'],
+ [11,'It will have been raining for three days.','তিন দিন ধরে বৃষ্টি হতে থাকবে।'],
+ [11,'My mother will have been cooking since morning.','আমার মা সকাল থেকে রান্না করতে থাকবেন।'],
+ [11,'He will have been driving for four hours.','সে চার ঘণ্টা ধরে গাড়ি চালাতে থাকবে।']
+];
+
+/* Part 2: [tense, Bangla, English before blank, accepted answers, English after blank, verb (V1), word help] */
+const FILL=[
+ [0,'আমার মা প্রতিদিন সকালে নামাজ পড়েন।','My mother',['prays'],'every morning.','pray',['pray = নামাজ পড়া']],
+ [0,'সে প্রতি শুক্রবার তার নানুকে দেখতে যায়।','She',['visits'],'her grandmother every Friday.','visit',['visit = দেখতে যাওয়া','grandmother = নানু / দাদু']],
+ [0,'শিশুরা স্কুলে যায়।','The children',['go'],'to school.','go',['children = শিশুরা (অনেকজন)']],
+ [0,'আমার ভাই একটি ব্যাংকে কাজ করে।','My brother',['works'],'in a bank.','work',['bank = ব্যাংক']],
+ [1,'আমার বোন এখন কাপড় ইস্ত্রি করছে।','My sister',['is ironing'],'the clothes now.','iron',['iron = ইস্ত্রি করা']],
+ [1,'আমরা পার্কে হাঁটছি।','We',['are walking'],'in the park.','walk',['walk = হাঁটা']],
+ [1,'আমি এই মুহূর্তে একটি চিঠি লিখছি।','I',['am writing'],'a letter at the moment.','write',['write → writing (e বাদ যায়)','at the moment = এই মুহূর্তে']],
+ [2,'সে বাড়ি পৌঁছেছে।','He',['has reached'],'home.','reach',['reach = পৌঁছানো']],
+ [2,'আমি বইটি পড়েছি।','I',['have read'],'the book.','read',['read → read → read']],
+ [2,'রিনা একটি কেক বানিয়েছে।','Rina',['has made'],'a cake.','make',['make → made → made']],
+ [2,'আমরা দুপুরের খাবার খেয়েছি।','We',['have eaten','have had'],'lunch.','eat',['eat → ate → eaten','lunch = দুপুরের খাবার']],
+ [3,'আমি দুই ঘণ্টা ধরে পড়ছি।','I',['have been studying','have been reading'],'for two hours.','study',['study = পড়াশোনা করা']],
+ [3,'তারা সকাল থেকে মাঠে কাজ করছে।','They',['have been working'],'in the field since morning.','work',['field = মাঠ','since = থেকে']],
+ [3,'শিশুটি এক ঘণ্টা ধরে কাঁদছে।','The baby',['has been crying'],'for an hour.','cry',['cry = কাঁদা']],
+ [4,'আমি গতকাল একটি নতুন শাড়ি কিনলাম।','I',['bought'],'a new saree yesterday.','buy',['buy → bought → bought']],
+ [4,'আমরা গত শুক্রবার কক্সবাজার গেলাম।','We',['went'],'to Cox’s Bazar last Friday.','go',['go → went → gone']],
+ [4,'সে গত রাতে একটি গান গাইল।','She',['sang'],'a song last night.','sing',['sing → sang → sung']],
+ [4,'বাবা দুই দিন আগে চিঠিটি পাঠালেন।','Father',['sent'],'the letter two days ago.','send',['send → sent → sent','ago = আগে']],
+ [5,'আমি তখন ভাত খাচ্ছিলাম।','I',['was eating'],'rice at that time.','eat',['at that time = তখন']],
+ [5,'তারা গতকাল এই সময়ে ক্রিকেট খেলছিল।','They',['were playing'],'cricket at this time yesterday.','play',['play = খেলা']],
+ [5,'আমার মা তখন রান্নাঘর পরিষ্কার করছিলেন।','My mother',['was cleaning'],'the kitchen at that time.','clean',['kitchen = রান্নাঘর','clean = পরিষ্কার করা']],
+ [6,'মেহমান আসার আগে আমরা রান্না শেষ করেছিলাম।','We',['had finished'],'the cooking before the guests came.','finish',['finish = শেষ করা','guest = মেহমান']],
+ [6,'আমি পৌঁছানোর আগে ট্রেনটি ছেড়ে দিয়েছিল।','The train',['had left'],'before I arrived.','leave',['leave → left → left','arrive = পৌঁছানো']],
+ [6,'ডাক্তার আসার আগে রোগীটি ঘুমিয়ে পড়েছিল।','The patient',['had fallen'],'asleep before the doctor came.','fall',['fall asleep = ঘুমিয়ে পড়া','fall → fell → fallen','patient = রোগী']],
+ [7,'সে দুই ঘণ্টা ধরে ঘুমাচ্ছিল।','She',['had been sleeping'],'for two hours.','sleep',['sleep = ঘুমানো']],
+ [7,'আমরা সকাল থেকে অপেক্ষা করছিলাম।','We',['had been waiting'],'since morning.','wait',['wait = অপেক্ষা করা']],
+ [7,'ছেলেটি এক ঘণ্টা ধরে দৌড়াচ্ছিল।','The boy',['had been running'],'for an hour.','run',['run → running (n দুইবার)']],
+ [8,'আমি আগামীকাল তোমাকে সাহায্য করব।','I',['will help'],'you tomorrow.','help',['help = সাহায্য করা']],
+ [8,'সে আগামী সপ্তাহে ঢাকা যাবে।','She',['will go'],'to Dhaka next week.','go',['next week = আগামী সপ্তাহে']],
+ [8,'আমরা পরশু একটি গাছ লাগাব।','We',['will plant'],'a tree the day after tomorrow.','plant',['plant = লাগানো','the day after tomorrow = পরশু']],
+ [8,'আমার বাবা আগামী মাসে একটি গাড়ি কিনবেন।','My father',['will buy'],'a car next month.','buy',['next month = আগামী মাসে']],
+ [9,'আগামীকাল এই সময়ে আমি ট্রেনে ভ্রমণ করতে থাকব।','I',['will be travelling','will be traveling'],'by train at this time tomorrow.','travel',['travel = ভ্রমণ করা','travel → travelling']],
+ [9,'সন্ধ্যা সাতটায় সে টিভি দেখতে থাকবে।','She',['will be watching'],'TV at seven in the evening.','watch',['watch = দেখা']],
+ [9,'আগামীকাল সকালে তারা ক্লাস করতে থাকবে।','They',['will be attending'],'a class tomorrow morning.','attend',['attend = উপস্থিত থাকা / ক্লাস করা']],
+ [10,'সন্ধ্যার মধ্যে আমি চিঠিটি লিখে থাকব।','I',['will have written'],'the letter by evening.','write',['write → wrote → written','by evening = সন্ধ্যার মধ্যে']],
+ [10,'আগামীকালের মধ্যে সে বইটি পড়ে থাকবে।','He',['will have read'],'the book by tomorrow.','read',['read → read → read']],
+ [10,'রাত দশটার মধ্যে তারা বাড়ি পৌঁছে থাকবে।','They',['will have reached'],'home by ten at night.','reach',['reach = পৌঁছানো']],
+ [11,'আমি দুই ঘণ্টা ধরে পড়তে থাকব।','I',['will have been reading','will have been studying'],'for two hours.','read',['read = পড়া']],
+ [11,'আগামী বছর সে দশ বছর ধরে এই স্কুলে পড়াতে থাকবে।','Next year she',['will have been teaching'],'at this school for ten years.','teach',['teach = পড়ানো']],
+ [11,'তারা তিন ঘণ্টা ধরে খেলতে থাকবে।','They',['will have been playing'],'for three hours.','play',['play = খেলা']]
+];
+
+const bnd=n=>String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[.,!?’']/g,'').replace(/\s+/g,' ').trim();
+function rng(seed){return()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function order(n,seed){const r=rng(seed),a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+const KEY='shraboni-tense-quiz-v1';
+let st={seed:20261021,a1:{},a2:{}};
+try{const r=JSON.parse(localStorage.getItem(KEY));if(r&&r.a1)st=r}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+
+function card1(i,no){
+ const [t,en,bn]=ID[i],showBn=i%2===0,ans=st.a1[i],done=ans!==undefined,ok=ans===t;
+ const cls=k=>done?(k===t?'right':k===ans?'wrong':''):'';
+ return `<article class="card ${done?(ok?'ok':'no'):''}" id="q1-${i}">
+  <div class="qn">প্রশ্ন ${bnd(no)}<span class="sub">· ${showBn?'বাংলা বাক্য':'ইংরেজি বাক্য'}</span>${done?`<span class="tag">${ok?'ঠিক':'ভুল'}</span>`:''}</div>
+  <p class="sent" ${showBn?'':'lang="en"'}>${esc(showBn?bn:en)}</p>
+  ${done?`<p class="alt">${esc(showBn?en:bn)}</p>`:''}
+  <div class="grid">${TIME.map((tm,g)=>`<div class="col"><div class="h">${TIME_BN[g]}<small>${tm}</small></div>${[0,1,2,3].map(a=>{const k=g*4+a;return `<button data-q1="${i}" data-k="${k}" class="${cls(k)}" ${done?'disabled':''}>${ASP[a]}</button>`}).join('')}</div>`).join('')}</div>
+  ${done?`<div class="fb ${ok?'ok':'no'}"><strong>${ok?'ঠিক হয়েছে':'ঠিক হয়নি'}</strong>${ok?'':`<div>ঠিক উত্তর: <b>${tname(t)}</b> (${tbn(t)})</div>`}<div>${esc(CL[t])}</div></div>`:''}
+ </article>`;
+}
+function card2(i,no){
+ const [t,bn,pre,acc,post,verb,sug]=FILL[i],ans=st.a2[i],done=ans!==undefined,ok=done&&acc.map(norm).includes(norm(ans));
+ return `<article class="card ${done?(ok?'ok':'no'):''}" id="q2-${i}">
+  <div class="qn">প্রশ্ন ${bnd(no)}${done?`<span class="tag">${ok?'ঠিক':'ভুল'}</span>`:''}</div>
+  <p class="sent">${esc(bn)}</p>
+  <p class="fillline" lang="en">${esc(pre)} <input id="in-${i}" data-in="${i}" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="উত্তর লিখুন" ${done?`disabled value="${esc(ans)}"`:''}> ${esc(post)} <span class="hint">(${esc(verb)})</span></p>
+  ${sug.length?`<div class="sugg"><em>শব্দ সাহায্য:</em>${sug.map(s=>`<span>${esc(s)}</span>`).join('')}</div>`:''}
+  ${done?`<div class="fb ${ok?'ok':'no'}"><strong>${ok?'ঠিক হয়েছে':'ঠিক হয়নি'}</strong><div lang="en">${esc(pre)} <b>${esc(acc[0])}</b> ${esc(post)}</div><div>${tname(t)} (${tbn(t)}): ${esc(CL[t])}</div></div>`:`<button class="btn" data-check="${i}">মিলান</button>`}
+ </article>`;
+}
+let O1,O2;
+function renderLists(){
+ O1=order(ID.length,st.seed);O2=order(FILL.length,st.seed+7);
+ document.getElementById('list1').innerHTML=O1.map((i,n)=>card1(i,n+1)).join('');
+ document.getElementById('list2').innerHTML=O2.map((i,n)=>card2(i,n+81)).join('');
+}
+function score(){
+ let d=0,c=0;const per=Array.from({length:12},()=>[0,0]);
+ for(const k in st.a1){d++;const t=ID[k][0],ok=st.a1[k]===t;per[t][1]++;if(ok){c++;per[t][0]++}}
+ for(const k in st.a2){d++;const f=FILL[k],ok=f[3].map(norm).includes(norm(st.a2[k]));per[f[0]][1]++;if(ok){c++;per[f[0]][0]++}}
+ return{d,c,per};
+}
+function renderBar(){
+ const {d,c,per}=score(),N=ID.length+FILL.length,w=d-c;
+ document.getElementById('bar').innerHTML=`<div class="row"><span>উত্তর দিয়েছেন <b>${bnd(d)}</b> / ${bnd(N)}</span><span>ঠিক <b style="color:var(--good)">${bnd(c)}</b> · ভুল <b style="color:var(--bad)">${bnd(w)}</b></span></div>
+  <div class="meter" role="img" aria-label="অগ্রগতি"><div class="g" style="width:${100*c/N}%"></div><div class="r" style="width:${100*w/N}%"></div></div>
+  <div class="jump"><a href="#part1">অংশ ১</a><a href="#part2">অংশ ২</a><a href="#result">ফলাফল</a></div>`;
+ const res=document.getElementById('result');
+ if(d<N){res.innerHTML=`<div class="result"><p class="sub">সব প্রশ্নের উত্তর দিলে এখানে পুরো ফলাফল দেখাবে। বাকি আছে ${bnd(N-d)}টি।</p><button class="btn ghost" data-reset>${askReset?'নিশ্চিত? আবার চাপ দিন':'সব মুছে নতুন করে শুরু'}</button></div>`;return}
+ const pct=Math.round(100*c/N);
+ res.innerHTML=`<div class="result"><h2>ফলাফল</h2>
+  <div class="stats"><div><div class="big">${bnd(c)}/${bnd(N)}</div><p class="sub">ঠিক</p></div><div><div class="big">${bnd(pct)}%</div><p class="sub">নম্বর</p></div><div><div class="big">${bnd(w)}</div><p class="sub">ভুল</p></div></div>
+  <p>${pct>=80?'চমৎকার! tense এখন ভালোভাবে আয়ত্তে।':pct>=60?'ভালো হয়েছে। লাল রঙের tense-গুলো আরেকবার পড়ে নিন।':'চিন্তা নেই। লাল রঙের tense-গুলোর পাঠ আবার পড়ে পরীক্ষাটা আবার দিন।'}</p>
+  <div class="byt">${per.map((p,t)=>{const r=p[1]?p[0]/p[1]:1;return `<span class="${r<.6?'weak':''}">${tname(t)}</span><span class="${r<.6?'weak':''}">${bnd(p[0])}/${bnd(p[1])}</span>`}).join('')}</div>
+  <button class="btn" data-reset>${askReset?'নিশ্চিত? আবার চাপ দিন':'নতুন ক্রমে আবার পরীক্ষা দিন'}</button></div>`;
+}
+let askReset=false;
+function refreshCard(part,i){
+ const el=document.getElementById(`q${part}-${i}`),list=part===1?O1:O2,no=list.indexOf(i)+(part===1?1:81);
+ el.outerHTML=part===1?card1(i,no):card2(i,no);
+ renderBar();
+}
+function check(i){
+ const v=document.getElementById('in-'+i).value;
+ if(!norm(v)){document.getElementById('in-'+i).focus();return}
+ st.a2[i]=v.trim();save();refreshCard(2,i);
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.reset===undefined)askReset=false;
+ if(b.dataset.q1!==undefined){const i=+b.dataset.q1;st.a1[i]=+b.dataset.k;save();refreshCard(1,i)}
+ else if(b.dataset.check!==undefined)check(+b.dataset.check);
+ else if(b.dataset.reset!==undefined){if(askReset){st={seed:Math.floor(Math.random()*1e9),a1:{},a2:{}};save();askReset=false;renderLists();renderBar();window.scrollTo(0,0)}else{askReset=true;renderBar()}}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.in!==undefined){e.preventDefault();check(+e.target.dataset.in)}});
+renderLists();renderBar();
+</script>
+</body>
+</html>
